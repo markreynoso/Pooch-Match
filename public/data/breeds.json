@@ -169,16 +169,17 @@
 	"sheds": true
 }, {
 	"dogapi": "french bulldog",
-	"name": "small",
-	"size": "shorthair",
-	"fur": 3,
-	"grooming": 8,
-	"activityLevel": true,
-	"kids": false,
-	"drools": 8,
-	"trainable": false,
-	"needsYard": true,
-	"allergies": true
+	"name": "French Bulldog",
+	"size": "small",
+	"fur": "shorthair",
+	"grooming": 3,
+	"activityLevel": 8,
+	"kids": true,
+	"drools": true,
+	"trainable": 8,
+	"needsYard": false,
+	"allergies": false,
+	"sheds": true
 }, {
 	"dogapi": "staffordshire bullterrier",
 	"name": "staffordshire Bull Terrier",
@@ -324,16 +325,17 @@
 	"sheds": true
 }, {
 	"dogapi": "doberman",
-	"name": "large",
-	"size": "shorthair",
-	"fur": 2,
-	"grooming": 8,
-	"activityLevel": false,
-	"kids": true,
-	"drools": 8,
-	"trainable": true,
-	"needsYard": false,
-	"allergies": true
+	"name": "Doberman Pinscher",
+	"size": "large",
+	"fur": "shorthair",
+	"grooming": 2,
+	"activityLevel": 8,
+	"kids": false,
+	"drools": true,
+	"trainable": 8,
+	"needsYard": true,
+	"allergies": false,
+	"sheds": true
 }, {
 	"dogapi": "norwegian elkhound",
 	"name": "Norwegian Elkhound",
