@@ -1,0 +1,26 @@
+{
+  "name": "pooch-match",
+  "version": "1.0.0",
+  "description": "dog matching app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markreynoso/Pooch-Match.git"
+  },
+  "author": "mark, daniel, brian, kinley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markreynoso/Pooch-Match/issues"
+  },
+  "homepage": "https://github.com/markreynoso/Pooch-Match#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "express-request-proxy": "^2.0.0",
+    "pg": "^7.3.0"
+  }
+}
