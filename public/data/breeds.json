@@ -104,7 +104,7 @@
 	"sheds": true
 }, {
 	"dogapi": "bouvier",
-	"name": "Bouvier",
+	"name": "Bouvier des Flanders",
 	"size": "large",
 	"fur": "curlycoat",
 	"grooming": 6,
@@ -869,7 +869,7 @@
 	"sheds": true
 }, {
 	"dogapi": "curly retriever",
-	"name": "Curly Coated Retriever",
+	"name": "Curly-Coated Retriever",
 	"size": "large",
 	"fur": "curlycoat",
 	"grooming": 3,
@@ -1259,7 +1259,7 @@
 	"sheds": true
 }, {
 	"dogapi": "dandie terrier",
-	"name": "Dandie Dinmont Terrier",
+	"name": "Dandi Dinmont Terrier",
 	"size": "small",
 	"fur": "curlycoat",
 	"grooming": 3,
@@ -1272,7 +1272,7 @@
 	"sheds": true
 }, {
 	"dogapi": "fox terrier",
-	"name": "Wire Fox Terrier",
+	"name": "Fox Terrier",
 	"size": "tiny",
 	"fur": "wirecoat",
 	"grooming": 3,
