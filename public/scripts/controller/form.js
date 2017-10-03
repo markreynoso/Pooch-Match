@@ -26,7 +26,8 @@ var app = app || {};
       };
 
       $.get('/dbpull', data)
-        .then(results => console.log(results));
+        .then(results => module.dogData = results.rows)
+        .then(console.log(module.dogData))
     });
   }
   module.formData();

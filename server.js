@@ -7,12 +7,15 @@ const PG = require('pg');
 const FS = require('fs');
 const PORT = process.env.PORT || 3000;
 const APP = EXPRESS();
-const CONSTRING = process.env.DATABASE_URL || 'postgres://localhost:5432/breeds';
+
+//const CONSTRING = process.env.DATABASE_URL || 'postgres://localhost:5432/breeds';
+const CONSTRING = process.env.DATABASE_URL || 'postgres://postgres:54321@localhost:5432/breeds';
 const REQUESTPROXY = require('express-request-proxy');
 const CLIENT = new PG.Client(CONSTRING);
 CLIENT.connect();
 APP.use(EXPRESS.static('./public'));
-
+APP.use(PARSE.json());
+APP.use(PARSE.urlencoded({extended: true}));
 APP.get('/', function(request, response){
   response.sendFile('index.html', {root: './public'});
 })
@@ -135,22 +138,23 @@ function queryMaker(data){
   }
   return query13;
 }
-
+function petFinderCall(request, response, currentDog){
+  console.log(request.query.zip);
+  (REQUESTPROXY({
+    url: `http://api.petfinder.com/pet.find`,
+    query: {key: `f6a8dafe70de07dbc2e288483f909123`, breed: `${currentDog.name}`, location: `${request.query.zip}`}
+  }))(request, response);
+}
 APP.get('/dbpull', function(request, response){
 
   CLIENT.query(`SELECT name, dogapi FROM dogs WHERE ${queryMaker(request)}`)
-
-  .then(result => response.send(result.rows))
-  .catch(console.error);
+  .then(result => {
+    console.log(result);
+    result.rows.forEach(dog => petFinderCall(request, response, dog));
+    response.send(result.rows);
+  })
+  .catch(console.error)
 })
 
-
-// function petRecommendation(request, response){
-//
-//   (requestProxy({
-//     url: `http://api.petfinder.com/pet.find?key=f6a8dafe70de07dbc2e288483f909123${insert request params}`,
-//     headers: {key: `f6a8dafe70de07dbc2e288483f909123`, breed: 'dog', location: 'zip'}
-//   }))()(request, response)
-// }
 
 APP.listen(PORT, () => console.log(`Server running on port ${PORT}.`));
