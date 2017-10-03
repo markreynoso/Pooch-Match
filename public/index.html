@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Pooch Match</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
   <header>
@@ -84,23 +85,8 @@
             <input type="checkbox" id="yard" name="yard">
             <label for="yard">Yes</label>
           </div>
-          <div class="fur">
-            <p>Dogs come with all sorts of fur types! Select any types of fur you'd like your new companion to have.</p>
-            <input type="checkbox" id="fur1" name="fur1">
-            <label for="fur1">A nice, easy, short coat.</label>
-            <input type="checkbox" id="fur2" name="fur2">
-            <label for="fur2">I love those pretty, long coats.</label>
-            <input type="checkbox" id="fur3" name="fur3">
-            <label for="fur3">I don't mind brushing, give me some plush double coats.</label>
-            <input type="checkbox" id="fur4" name="fur4">
-            <label for="fur4">I love those curls! Show me curly coated breeds.</label>
-            <input type="checkbox" id="fur5" name="fur5">
-            <label for="fur5">I aodre that wiry coat look.</label>
-            <input type="checkbox" id="fur6" name="fur6">
-            <label for="fur6">As little fur as possible, I was a hariless dog!</label>
-          </div>
           <div class="zip">
-            <p>Please enter your 5 digit zip code to see your matches! </p><input type="text" pattern="[0-9]{5}" title="Five digit zip code" placeholder="Five digit zip code" />
+            <p>Please enter your 5 digit zip code to see your matches! </p><input id="zip-code" type="text" pattern="[0-9]{5}" title="Five digit zip code" placeholder="Five digit zip code" />
           </div>
         </form>
       </div>
