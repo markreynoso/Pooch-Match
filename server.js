@@ -22,7 +22,7 @@ APP.get('/', function(request, response){
 function makeTable(request, response){
   CLIENT.query(`CREATE TABLE IF NOT EXISTS dogs (
       breed_id SERIAL PRIMARY KEY,
-      dogapi VARCHAR(255),
+      dogapi VARCHAR(255) UNIQUE,
       name VARCHAR(255),
       size VARCHAR(255),
       fur VARCHAR(255),
@@ -41,7 +41,7 @@ function makeTable(request, response){
 function loadDogs(){
   FS.readFile('./public/data/breeds.json', (err, fd) => {
     JSON.parse(fd.toString()).forEach(ele => {
-      CLIENT.query(`INSERT INTO dogs(dogapi, name, size, fur, grooming, activityLevel, kids, drools, trainable, needsYard, allergies, sheds) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) ON CONFLICT DO NOTHING`, [ele.dogapi, ele.name, ele.size, ele.fur, ele.grooming, ele.activityLevel, ele.kids, ele.drools, ele.trainable, ele.needsYard, ele.allergies, ele.sheds])
+      CLIENT.query(`INSERT INTO dogs(dogapi, name, size, fur, grooming, activityLevel, kids, drools, trainable, needsYard, allergies, sheds) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) ON CONFLICT (dogapi) DO NOTHING`, [ele.dogapi, ele.name, ele.size, ele.fur, ele.grooming, ele.activityLevel, ele.kids, ele.drools, ele.trainable, ele.needsYard, ele.allergies, ele.sheds])
         .catch(function(err){
           console.error(ele.name + ' broken\n' + err);
         });
