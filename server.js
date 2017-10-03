@@ -138,23 +138,33 @@ function queryMaker(data){
   }
   return query13;
 }
-function petFinderCall(request, response, currentDog){
-  console.log(request.query.zip);
-  (REQUESTPROXY({
-    url: `http://api.petfinder.com/pet.find`,
-    query: {key: `f6a8dafe70de07dbc2e288483f909123`, breed: `${currentDog.name}`, location: `${request.query.zip}`}
-  }))(request, response);
-}
+// function petFinderCall(request, response, currentDog){
+//   console.log(request.query.zip);
+//   (REQUESTPROXY({
+//     url: `http://api.petfinder.com/pet.find`,
+//     query: {key: `f6a8dafe70de07dbc2e288483f909123`, breed: `${currentDog.name}`, location: `${request.query.zip}`}
+//   }))(request, response);
+// }
 APP.get('/dbpull', function(request, response){
 
   CLIENT.query(`SELECT name, dogapi FROM dogs WHERE ${queryMaker(request)}`)
   .then(result => {
     console.log(result);
-    result.rows.forEach(dog => petFinderCall(request, response, dog));
     response.send(result.rows);
   })
   .catch(console.error)
 })
 
+APP.get('/find/:breed/:zip', function(request, response){
+  console.log(request.params);
+  (REQUESTPROXY({
+    url: `http://api.petfinder.com/pet.find`,
+    query: {key: `f6a8dafe70de07dbc2e288483f909123`, breed: `${request.params.breed}`, location: `${request.params.zip}`, format: `json`}
+  }))(request, response);
+})
+
+APP.get('*', (request, response) => {
+  response.sendFile('404.html', {root: './public'})
+})
 
 APP.listen(PORT, () => console.log(`Server running on port ${PORT}.`));
