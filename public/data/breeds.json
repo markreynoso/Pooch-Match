@@ -61,7 +61,7 @@
 	"drools": false,
 	"trainable": 8,
 	"needsYard": true,
-	"allergies": true,
+	"allergies": false,
 	"sheds": true
 }, {
 	"dogapi": "beagle",
