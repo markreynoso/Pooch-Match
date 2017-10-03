@@ -34,8 +34,8 @@ function makeTable(request, response){
       needsYard BOOLEAN,
       allergies BOOLEAN,
       sheds BOOLEAN)`)
-    .then(loadDogs)
-    .catch(console.error);
+        .then(loadDogs)
+        .catch(console.error);
 }
 
 function loadDogs(){
@@ -50,7 +50,100 @@ function loadDogs(){
 }
 makeTable();
 
-// CLIENT.query(`SELECT 'name' FROM 'breeds' WHERE ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`[request.allergy.])
+function queryMaker(data){
+  let query1, query2, query3, query4, query5, query6, query7, query8, query9, query10, query11, query12, query13;
+
+  if(data.allergy){
+    query1 = `allergies=true`
+  }else{
+    query1 = `allergies=true OR allergies=false`
+  }
+
+  if(data.kids){
+    query2 = query1 + ` AND kids=true`
+  }else{
+    query2 = query1;
+  }
+  if(data.energy === 1){
+    query3 = query2 + ` AND activityLevel BETWEEN 1 AND 3`
+  }else if(data.energy === 2){
+    query3 = query2 + ` AND activityLevel BETWEEN 4 AND 6`
+  }else{
+    query3 = query2 + ` AND activityLevel BETWEEN 7 AND 10`
+  }
+
+  if(!data.size1){
+    query4 = query3 + ` AND NOT size='tiny'`
+  }else{
+    query4 = query3;
+  }
+  if(!data.size2){
+    query5 = query4 + ` AND NOT size='small'`
+  }else{
+    query5 = query4;
+  }
+  if(!data.size3){
+    query6 = query5 + ` AND NOT size='medium'`
+  }else{
+    query6 = query5;
+  }
+  if(!data.size4){
+    query7 = query6 + ` AND NOT size='large'`
+  }else{
+    query7 = query6;
+  }
+  if(!data.size5){
+    query8 = query7 + ` AND NOT size='giant'`
+  }else{
+    query8 = query7;
+  }
+
+  if(data.trainable === 1){
+    query9 = query8 + ` AND trainable BETWEEN 8 AND 10`
+  }else if(data.trainable === 2){
+    query9 = query8 + ` AND trainable BETWEEN 6 AND 10`
+  }else if(data.trainable === 3){
+    query9 = query8 + ` AND trainable BETWEEN 3 AND 10`
+  }else{
+    query9 = query8;
+  }
+
+  if(data.grooming === 1){
+    query10 = query9 + ` AND grooming BETWEEN 1 AND 4`
+  }else if(data.grooming === 2){
+    query10 = query9 + ` AND grooming BETWEEN 1 AND 7`
+  }else{
+    query10 = query9;
+  }
+
+  if(data.sheds){
+    query11 = query10;
+  }else{
+    query11 = query10 + ` AND sheds=false`
+  }
+
+  if(data.yard){
+    query12 = query11;
+  }else{
+    query12 = query11 + ` AND needsYard=false`
+  }
+
+  if(data.drools){
+    query13 = query12 + ` AND drools=false`
+  }else{
+    query13 = query12;
+  }
+  return query13;
+}
+
+APP.get('/dbpull', function(request, response){
+
+  CLIENT.query(`SELECT name, dogapi FROM dogs WHERE ${queryMaker(request)}`)
+
+  .then(result => response.send(result.rows))
+  .catch(console.error);
+})
+
 
 // function petRecommendation(request, response){
 //
