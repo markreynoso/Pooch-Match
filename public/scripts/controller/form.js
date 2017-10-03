@@ -8,6 +8,18 @@ var app = app || {};
     $('#dog-form').on('submit', function(event){
       event.preventDefault();
 
+      function apiLoop() {
+        for (var i = 0; i < app.dogData.length; i++) {
+          console.log(app.dogData[i]);
+          $.get(`/find/${app.dogData[i].name}/${data.zip}`)
+          .then(filterPets);
+        }
+      }
+
+      function filterPets(response) {
+        console.log(response);
+      }
+
       let data = {
         allergy: event.target.allergy.checked,
         kids: event.target.kids.checked,
@@ -26,8 +38,8 @@ var app = app || {};
       };
 
       $.get('/dbpull', data)
-        .then(results => module.dogData = results.rows)
-        .then(console.log(module.dogData))
+        .then(results => app.dogData = results)
+        .then(apiLoop);
     });
   }
   module.formData();
