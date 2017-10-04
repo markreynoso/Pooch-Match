@@ -1,1 +1,68 @@
-some css
+
+header{
+  width: 100%;
+}
+
+#topnav{
+  width: 100%;
+}
+
+#navlist{
+  list-style-type: none;
+  display: none;
+  text-align: center;
+  padding-bottom: 15px;
+
+}
+#navlist li{
+  border: 1px solid white;
+  margin: auto;
+  width: 40%;
+  padding: 5px 0px;
+}
+#navlist a{
+text-decoration: none;
+}
+
+#hamburger{
+  width: 100%;
+}
+
+#menu-icon{
+  position: absolute;
+  width: 20vw;
+  float: right;
+  top: 8px;
+  right: 8px;
+}
+
+h1{
+  padding-top: 8px;
+  padding-bottom: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+#welcome-div{
+  background-color: gray;
+}
+#welcome{
+  text-align: center;
+  padding: 3px;
+}
+
+#tagline-div{
+  background-color: blue;
+  padding-bottom: 5px;
+}
+#tagline{
+  text-align: center;
+}
+
+#home-body{
+  padding: 20px;
+}
+
+footer{
+  padding: 20px;
+}
