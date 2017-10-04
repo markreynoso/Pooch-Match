@@ -63,4 +63,5 @@ var app = app || {};
   }
 
   module.formData(app.appendBreeds);
+  app.appendBreeds();
 })(app);

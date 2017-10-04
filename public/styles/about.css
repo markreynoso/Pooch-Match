@@ -1,0 +1,29 @@
+@media only screen and (min-width: 640px) {
+  h1{
+  text-align: center;
+  }
+  .about-us{
+  width: 90%;
+  margin: auto;
+  }
+  .members{
+  border: 1px solid black;
+  max-width: 300;
+  max-height: 400;
+  }
+  img{
+  display: block;
+  margin: auto;
+  }
+  h3{
+    text-align: center;
+  }
+  p{
+    text-align: center;
+  }
+  .socialMedia {
+    display: block;
+    margin: auto;
+  }
+
+}
