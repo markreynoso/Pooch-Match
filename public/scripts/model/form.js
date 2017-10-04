@@ -32,17 +32,9 @@ var app = app || {};
             response.petfinder.pets.pet[i].contact.email.$t,
             response.petfinder.pets.pet[i].contact.phone.$t,
             response.petfinder.pets.pet[i].contact.state.$t,
-            response.petfinder.pets.pet[i].contact.zip.$t, response.petfinder.pets.pet[i].media.photos.photo.filter(function(photo){return (photo['@size'] === 'x' && photo['@id'] === '1');})[0].$t, response.petfinder.pets.pet[i].sex.$t
-
-        console.log(response.petfinder.pets.pet[0].media.photos.photo);
-
-        for (var i = 0; i < response.petfinder.pets.pet.length; i++) {
-          app.adoptablePets.push(new app.AdoptablePet(
-            response.petfinder.pets.pet[i].name.$t,
-            response.petfinder.pets.pet[i].breeds,
-            response.petfinder.pets.pet[i].contact, response.petfinder.pets.pet[i].media.photos.photo.filter(function(photo){return (photo['@size'] === 'x' && photo['@id'] === '1');})[0].$t, response.petfinder.pets.pet[i].sex.$t
-
-
+            response.petfinder.pets.pet[i].contact.zip.$t,
+            response.petfinder.pets.pet[i].media.photos.photo.filter(function(photo){return (photo['@size'] === 'x' && photo['@id'] === '1');})[0].$t,
+            response.petfinder.pets.pet[i].sex.$t
           ));
 
 
@@ -80,6 +72,4 @@ var app = app || {};
   }
 
   module.formData(app.appendBreeds);
-  
-  app.appendBreeds();
 })(app);
