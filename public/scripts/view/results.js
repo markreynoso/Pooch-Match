@@ -8,7 +8,6 @@ var app = app || {};
   }
   function appendBreeds(breed){
     $('#breedList').append(renderName(breed));
-
   }
   module.appendBreeds = appendBreeds;
 })(app);

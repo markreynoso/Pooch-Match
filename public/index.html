@@ -27,14 +27,45 @@
           <h2>Name: {{ name }}</h2>
           <p>Sex: {{ sex }}</p>
           <p>Breeds: {{#each breeds}} <span>{{this}}</span> {{/each}}</p>
-          <p>Contact: <ul>{{#each contact}} <li>{{this}}</li> {{/each}}</ul></p>
+          <p>Contact: <ul>
+            {{#if address}}
+              <li>
+                {{address}}
+              </li>
+            {{/if}}
+            {{#if city}}
+              <li>
+                {{city}}
+              </li>
+            {{/if}}
+            {{#if email}}
+              <li>
+                {{email}}
+              </li>
+            {{/if}}
+            {{#if phone}}
+              <li>
+                {{phone}}
+              </li>
+            {{/if}}
+            {{#if state}}
+              <li>
+                {{state}}
+              </li>
+            {{/if}}
+            {{#if zip}}
+              <li>
+                {{zip}}
+              </li>
+            {{/if}}
+          </ul></p>
         </div>
       </section>
     </script>
 
     <script id="breedMatch-template" type="text/x-handlebars-template">
       <ul>
-        <a href="/somethingidc" target="_blank"><li>{{ name }}</li></a>
+        <li class="breed-match">{{ name }}</li>
       </ul>
     </script>
 
