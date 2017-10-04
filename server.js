@@ -8,8 +8,8 @@ const FS = require('fs');
 const PORT = process.env.PORT || 3000;
 const APP = EXPRESS();
 
-//const CONSTRING = process.env.DATABASE_URL || 'postgres://localhost:5432/breeds';
-const CONSTRING = process.env.DATABASE_URL || 'postgres://postgres:54321@localhost:5432/breeds';
+const CONSTRING = process.env.DATABASE_URL || 'postgres://localhost:5432/breeds';
+// const CONSTRING = process.env.DATABASE_URL || 'postgres://postgres:54321@localhost:5432/breeds';
 const REQUESTPROXY = require('express-request-proxy');
 const CLIENT = new PG.Client(CONSTRING);
 CLIENT.connect();
