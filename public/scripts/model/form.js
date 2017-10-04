@@ -12,7 +12,6 @@ var app = app || {};
         for (var i = 0; i < app.dogData.length; i++) {
           console.log(app.dogData[i]);
           $.get(`/find/${app.dogData[i].name}/${data.zip}`)
-
             .then(filterPets);
 
         }
@@ -42,6 +41,7 @@ var app = app || {};
             response.petfinder.pets.pet[i].name.$t,
             response.petfinder.pets.pet[i].breeds,
             response.petfinder.pets.pet[i].contact, response.petfinder.pets.pet[i].media.photos.photo.filter(function(photo){return (photo['@size'] === 'x' && photo['@id'] === '1');})[0].$t, response.petfinder.pets.pet[i].sex.$t
+
 
           ));
 
@@ -82,5 +82,4 @@ var app = app || {};
   module.formData(app.appendBreeds);
   
   app.appendBreeds();
-
 })(app);
