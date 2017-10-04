@@ -327,7 +327,7 @@
 	"dogapi": "norwegian elkhound",
 	"name": "Norwegian Elkhound",
 	"size": "large",
-	"fur": "double coated",
+	"fur": "http://www.vetstreet.com/dogs/norwegian-elkhound",
 	"grooming": 9,
 	"activityLevel": 8,
 	"kids": false,
