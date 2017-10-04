@@ -5,7 +5,7 @@
     <title>Pooch Match</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.amd.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.7.1/page.min.js"></script>
     <script id="adoptablePet-template" type="text/x-handlebars-template">
       <section class="adoptable">
         <div>
@@ -39,7 +39,12 @@
   <header>
 
   <main>
-    <section class="questionaire">
+    <nav>
+      <a href="/">The Quiz</a>
+      <a id="results-link" href="/results">Your Matches</a>
+      <a href="/about">About</a>
+    </nav>
+    <section class="quiz">
       <img id="left-arrow"></img>
       <div id="questions">
         <form id="dog-form">
@@ -116,12 +121,17 @@
       </div>
       <img id="right-arrow"></img>
     </section>
+    <div id="results">
+      <section id="breedSelection">
 
-    <section id="breedSelection">
+      </section>
 
-    </section>
+      <section id="breedList">
 
-    <section id="breedList">
+      </section>
+
+    </div>
+    <section id="about">
 
     </section>
   </main>
