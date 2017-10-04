@@ -2,14 +2,14 @@
 var app = app || {};
 
 (function(module){
-  let renderName = function(dogName){
+  toHtml = function(potato){
     let $template = Handlebars.compile($('#breedMatch-template').html());
-    return $template(dogName)
+    return $template(potato)
   }
-  function appendBreeds(){
+  module.appendBreeds = function(){
     app.dogData.forEach(function(breed){
-      $('#breedList').append(renderName(breed.name));
-      console.log('I am making stuff');
+      $('#breedList').append(toHtml(breed));
     })
   }
+  
 })(app);
