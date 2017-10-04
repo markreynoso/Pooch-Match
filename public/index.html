@@ -3,10 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Pooch Match</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="styles/404.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.amd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.7.1/page.min.js"></script>
     <script id="adoptablePet-template" type="text/x-handlebars-template">
+
       <section class="adoptable">
         <div>
           <img src="{{ picture }}"></img>
@@ -31,10 +39,18 @@
   </head>
   <body>
   <header>
-    <nav>
-      <a href="/">The Quiz</a>
-      <a id="results-link" href="/results">Your Matches</a>
-      <a href="/about">About</a>
+    <nav id="topnav">
+
+    <div id="menu-icon">
+      <img id="hamburger" src="img/dachshundburgermenu.png"></img>
+    </div>
+    <h1>Pooch Match</h1>
+
+    <ul id="navlist">
+      <li><a href="/">Home</a></li>
+      <li><a id="results-link" href="/results">Your Matches</a></li>
+      <li><a href="/about">About</a></li>
+    <ul>
     </nav>
 
   <header>
@@ -42,8 +58,13 @@
   <main>
     <section id="quiz">
       <div class="quiz-page" id="instructions">
-        <h2>Welcome to Pooch Match!</h2>
-        <h3 id="tagline">Find your new best friend!</h3>
+        <div id="welcome-div">
+          <h2 id="welcome">Welcome to Pooch Match!</h2>
+        </div>
+        <div id="tagline-div">
+          <h3 id="tagline">Find your new best friend!</h3>
+        </div>
+        <div id="home-body">
         <p>Are you interested in adding a new dog to your household? Pooch Match is here to help you find your best possible new best friend!</p>
         <p>We have made a quiz, designed to help you find the dog breeds that match best with your lifestyle and preferences, so that your pup is exactly what you need.</p>
         <p>Then, we take your breed matches, and find you adoptable dogs near you, in the breeds that suit your life. Are you ready to see what dogs are out there waiting for you?</p>
@@ -203,5 +224,6 @@
   <script type="text/javascript" src="/scripts/controller/aboutController.js"></script>
   <script type="text/javascript" src="/scripts/controller/quizController.js"></script>
   <script type="text/javascript" src="/scripts/controller/resultsController.js"></script>
+  <script type="text/javascript" src="/scripts/controller/navController.js"></script>
   <script type="text/javascript" src="/scripts/controller/routes.js"></script>
 </html>
