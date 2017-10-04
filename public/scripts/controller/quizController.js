@@ -4,6 +4,7 @@ var app = app || {};
 (function(module) {
   const quizController = {};
 
+  app.quizView();
   quizController.index = () => {
     $('#quiz').show().siblings().hide();
     $('#results-link').hide();
@@ -11,5 +12,5 @@ var app = app || {};
       $('#results-link').show();
     }
   };
-
+  module.quizController = quizController;
 })(app);
