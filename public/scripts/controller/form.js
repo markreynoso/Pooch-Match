@@ -4,7 +4,7 @@ var app = app || {};
 
 (function(module){
 
-  module.formData = function(){
+  module.formData = function(callback){
     $('#dog-form').on('submit', function(event){
       event.preventDefault();
 
@@ -13,7 +13,9 @@ var app = app || {};
           console.log(app.dogData[i]);
           $.get(`/find/${app.dogData[i].name}/${data.zip}`)
           .then(filterPets);
+
         }
+
       }
 
       function filterPets(response) {
@@ -57,6 +59,8 @@ var app = app || {};
         .then(results => app.dogData = results)
         .then(apiLoop);
     });
+    callback();
   }
-  module.formData();
+
+  module.formData(app.appendBreeds);
 })(app);
