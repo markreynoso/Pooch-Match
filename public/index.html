@@ -4,6 +4,30 @@
     <meta charset="utf-8">
     <title>Pooch Match</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.amd.min.js"></script>
+
+    <script id="adoptablePet-template" type="text/x-handlebars-template">
+      <section class="adoptable">
+        <div>
+          <img src="{{ picture }}"></img>
+        </div>
+        <div>
+          <h2>Name: {{ name }}</h2>
+          <p>Sex: {{ sex }}</p>
+          <p>Breeds: {{#each breeds}} <span>{{this}}</span> {{/each}}</p>
+          <p>Contact: <ul>{{#each contact}} <li>{{this}}</li> {{/each}}</ul></p>
+        </div>
+      </section>
+    </script>
+
+    <script id="breedMatch-template" type="text/x-handlebars-template">
+      <ul>
+        {{#each name}}
+        <a href="/somethingidc" target="_blank"><li>{{this}}</li></a>
+        {{/each}}
+      </ul>
+    </script>
+
   </head>
   <body>
   <header>
@@ -18,7 +42,7 @@
     <section class="questionaire">
       <img id="left-arrow"></img>
       <div id="questions">
-        <form id="dog-form" action="index.html" method="post">
+        <form id="dog-form">
           <div class="allergy">
             <p>Are you or anyone in your house allergic to dogs?</p>
             <input type="checkbox" id="allergy" name="allergy">
@@ -86,11 +110,19 @@
             <label for="yard">Yes</label>
           </div>
           <div class="zip">
-            <p>Please enter your 5 digit zip code to see your matches! </p><input id="zip-code" type="text" pattern="[0-9]{5}" title="Five digit zip code" placeholder="Five digit zip code" />
+            <p>Please enter your 5 digit zip code to see your matches! </p><input id="zipCode" type="text" pattern="[0-9]{5}" title="Five digit zip code" placeholder="Five digit zip code" />
           </div>
         </form>
       </div>
       <img id="right-arrow"></img>
+    </section>
+
+    <section id="breedSelection">
+
+    </section>
+
+    <section id="breedList">
+
     </section>
   </main>
 

@@ -1,89 +1,67 @@
 'use strict';
-$('#dog-form').on('submit', function(event){
-  event.preventDefault();
 
-  console.log(event);
-  let query1, query2, query3, query4, query5, query6, query7, query8, query9, query10, query11, query12, query13;
+var app = app || {};
 
-  if(event.target.allergy.checked){
-    query1 = `allergies='true'`
-  }else{
-    query1 = `allergies='true' OR allergies='false'`
-  }
+(function(module){
 
-  if(event.target.kids.checked){
-    query2 = query1 + ` AND kids='true'`
-  }else{
-    query2 = query1;
-  }
-  if(event.target.energy.value === 1){
-    query3 = query2 + ` AND activityLevel BETWEEN 1 AND 3`
-  }else if(event.target.energy.value === 2){
-    query3 = query2 + ` AND activityLevel BETWEEN 4 AND 6`
-  }else{
-    query3 = query2 + ` AND activityLevel BETWEEN 7 AND 10`
-  }
+  module.formData = function(callback){
+    $('#dog-form').on('submit', function(event){
+      event.preventDefault();
 
-  if(!event.target.size1.checked){
-    query4 = query3 + ` AND NOT size='tiny'`
-  }else{
-    query4 = query3;
-  }
-  if(!event.target.size2.checked){
-    query5 = query4 + ` AND NOT size='small'`
-  }else{
-    query5 = query4;
-  }
-  if(!event.target.size3.checked){
-    query6 = query5 + ` AND NOT size='medium'`
-  }else{
-    query6 = query5;
-  }
-  if(!event.target.size4.checked){
-    query7 = query6 + ` AND NOT size='large'`
-  }else{
-    query7 = query6;
-  }
-  if(!event.target.size5.checked){
-    query8 = query7 + ` AND NOT size='giant'`
-  }else{
-    query8 = query7;
-  }
+      function apiLoop() {
+        for (var i = 0; i < app.dogData.length; i++) {
+          console.log(app.dogData[i]);
+          $.get(`/find/${app.dogData[i].name}/${data.zip}`)
+          .then(filterPets);
 
-  if(event.target.trainable.value === 1){
-    query9 = query8 + ` AND trainable BETWEEN 8 AND 10`
-  }else if(event.target.trainable.value === 2){
-    query9 = query8 + ` AND trainable BETWEEN 6 AND 10`
-  }else if(event.target.trainable.value === 3){
-    query9 = query8 + ` AND trainable BETWEEN 3 AND 10`
-  }else{
-    query9 = query8;
-  }
+        }
 
-  if(event.target.grooming.value === 1){
-    query10 = query9 + ` AND grooming BETWEEN 1 AND 4`
-  }else if(event.target.grooming.value === 2){
-    query10 = query9 + ` AND grooming BETWEEN 1 AND 7`
-  }else{
-    query10 = query9;
+      }
+
+      function filterPets(response) {
+        console.log(response.petfinder.pets.pet[0].media.photos.photo);
+
+        for (var i = 0; i < response.petfinder.pets.pet.length; i++) {
+          app.adoptablePets.push(new app.AdoptablePet(
+            response.petfinder.pets.pet[i].name.$t,
+            response.petfinder.pets.pet[i].breeds,
+            response.petfinder.pets.pet[i].contact, response.petfinder.pets.pet[i].media.photos.photo.filter(function(photo){return (photo['@size'] === 'x' && photo['@id'] === '1');})[0].$t, response.petfinder.pets.pet[i].sex.$t
+          ));
+
+
+          // app.adoptablePets.name = response.petfinder.pets.pet[i].name;
+          // app.adoptablePets.breeds = response.petfinder.pets.pet[i].breeds;
+          // app.adoptablePets.contact = response.petfinder.pets.pet[i].contact;
+          // app.adoptablePets.sex = response.petfinder.pets.pet[i].sex;
+          // app.adoptablePets.photo = response.petfinder.pets.pet[i].media.photos.photo.filter(function(photo){return (photo['@size'] === 'x' && photo['@id'] === '1');})[0].$t;
+
+        }
+      }
+
+      let data = {
+        allergy: event.target.allergy.checked,
+        kids: event.target.kids.checked,
+        energy: event.target.energy.value,
+        size1: event.target.size1.checked,
+        size2: event.target.size2.checked,
+        size3: event.target.size3.checked,
+        size4: event.target.size4.checked,
+        size5: event.target.size5.checked,
+        trainable: event.target.trainable.value,
+        grooming: event.target.grooming.value,
+        sheds: event.target.sheds.checked,
+        yard: event.target.yard.checked,
+        drools: event.target.drools.checked,
+        zip: event.target.zipCode.value
+      };
+
+      $.get('/dbpull', data)
+        .then(results => app.dogData = results)
+        .then(apiLoop);
+    });
+    callback();
   }
 
-  if(event.target.sheds.checked){
-    query11 = query10;
-  }else{
-    query11 = query10 + ` AND sheds='false'`
-  }
-
-  if(event.target.yard.checked){
-    query12 = query11;
-  }else{
-    query12 = query11 + ` AND yard='false'`
-  }
-
-  if(event.target.drools.checked){
-    query13 = query12 + ` AND drools='false'`
-  }else{
-    query13 = query12;
-  }
-  debugger;
-});
+  module.formData(app.appendBreeds);
+  app.appendBreeds();
+})(app);
