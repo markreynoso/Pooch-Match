@@ -9,4 +9,6 @@ var app = app || {};
     $('#results-link').hide();
   };
 
+  module.resultsController = resultsController;
+
 })(app);
