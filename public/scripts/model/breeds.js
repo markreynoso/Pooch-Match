@@ -4,10 +4,15 @@ var app = app || {};
   module.dogData;
   module.adoptablePets = [];
 
-  function AdoptablePet(name, breeds, contact, picture, sex){
+  function AdoptablePet(name, breeds, address, city, email, phone, state, zip, picture, sex){
     this.name = name;
     this.breeds = breeds;
-    this.contact = contact;
+    this.address = address;
+    this.city = city;
+    this.email = email;
+    this.phone = phone;
+    this.state = state;
+    this.zip = zip;
     this.picture = picture;
     this.sex = sex;
   }

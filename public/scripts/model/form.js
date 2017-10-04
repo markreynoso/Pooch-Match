@@ -12,20 +12,29 @@ var app = app || {};
         for (var i = 0; i < app.dogData.length; i++) {
           console.log(app.dogData[i]);
           $.get(`/find/${app.dogData[i].name}/${data.zip}`)
-          .then(filterPets);
+            .then(filterPets);
 
         }
 
       }
 
       function filterPets(response) {
-        console.log(response.petfinder.pets.pet[0].media.photos.photo);
-
+        // console.log(response.petfinder.pets.pet[1].contact.address1);
+        // debugger;
         for (var i = 0; i < response.petfinder.pets.pet.length; i++) {
           app.adoptablePets.push(new app.AdoptablePet(
             response.petfinder.pets.pet[i].name.$t,
-            response.petfinder.pets.pet[i].breeds,
-            response.petfinder.pets.pet[i].contact, response.petfinder.pets.pet[i].media.photos.photo.filter(function(photo){return (photo['@size'] === 'x' && photo['@id'] === '1');})[0].$t, response.petfinder.pets.pet[i].sex.$t
+
+            Array.isArray(response.petfinder.pets.pet[i].breeds.breed) ? response.petfinder.pets.pet[i].breeds.breed.map(obj => obj.$t) : [response.petfinder.pets.pet[i].breeds.breed.$t],
+
+            response.petfinder.pets.pet[i].contact.address1.$t,
+            response.petfinder.pets.pet[i].contact.city.$t,
+            response.petfinder.pets.pet[i].contact.email.$t,
+            response.petfinder.pets.pet[i].contact.phone.$t,
+            response.petfinder.pets.pet[i].contact.state.$t,
+            response.petfinder.pets.pet[i].contact.zip.$t,
+            response.petfinder.pets.pet[i].media.photos.photo.filter(function(photo){return (photo['@size'] === 'x' && photo['@id'] === '1');})[0].$t,
+            response.petfinder.pets.pet[i].sex.$t
           ));
 
 
@@ -63,5 +72,4 @@ var app = app || {};
   }
 
   module.formData(app.appendBreeds);
-  app.appendBreeds();
 })(app);
