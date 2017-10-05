@@ -61,20 +61,20 @@ var app = app || {};
         };
 
         $.get('/dbpull', data)
-        .then(results => {
-          if(results.length === 0){
-            $('main').append(`<div id="noBreeds"><h3>Sorry, no breeds match your responses.</h3><p>If you'd like to change your answers and try again, click below.</p><button name="tryAgain">Try Again</button></div>`);
-            $('#noBreeds').on('click', function(){
-              $('#noBreeds button').remove();
-              page('/');
-              $('#instructions').hide();
-              $('#the-quiz').show();
-            })
-          } else{
-            app.dogData = results;
-            apiLoop(callback, data.zip);
-          }
-        })
+          .then(results => {
+            if(results.length === 0){
+              $('main').append(`<div id="noBreeds"><h3>Sorry, no breeds match your responses.</h3><p>If you'd like to change your answers and try again, click below.</p><button name="tryAgain">Try Again</button></div>`);
+              $('#noBreeds button').on('click', function(){
+                $('#noBreeds button').remove();
+                page('/');
+                $('#instructions').hide();
+                $('#the-quiz').show();
+              })
+            } else{
+              app.dogData = results;
+              apiLoop(callback, data.zip);
+            }
+          })
 
         page('/results');
 
