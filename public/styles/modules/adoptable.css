@@ -1,1 +1,12 @@
-css
+.adoptable {
+  text-align: center;
+  margin: auto;
+}
+.adoptable div img {
+  width: 40vw;
+  height: auto;
+}
+.label {
+  font-family: 'Courgette', cursive;
+  font-size: 3vh;
+}
