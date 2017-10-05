@@ -8,6 +8,7 @@ var app = app || {};
     return $template(dogName)
   }
   function appendMatches(event){
+    $('#breedSelection').empty();
     for (var i = 0; i < app.adoptablePets.length; i++) {
       if (app.adoptablePets[i].breeds.includes(event.target.innerText)) {
 
