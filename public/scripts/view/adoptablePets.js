@@ -18,7 +18,9 @@ var app = app || {};
       })
     } else {
       for (var i = 0; i < app.adoptablePets.length; i++) {
-        $('#breedSelection').append(renderMatch(app.adoptablePets[i]));
+        if (app.adoptablePets[i].breeds.includes(event.target.innerText)) {
+          $('#breedSelection').append(renderMatch(app.adoptablePets[i]));
+        }
       }
     }
   }

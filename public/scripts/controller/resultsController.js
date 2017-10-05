@@ -12,9 +12,10 @@ var app = app || {};
 
   module.breedListener = function(){
     $('#breedList').off('click').on('click', '.breed-match', function(event){
+      event.stopPropagation();
+      console.log(event);
       $('#breedList').hide();
       $('#breedSelection').show();
-      event.stopPropagation();
       app.appendMatches(event);
     })
   }

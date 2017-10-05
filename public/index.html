@@ -67,8 +67,11 @@
     </script>
 
     <script id="breedMatch-template" type="text/x-handlebars-template">
-      <ul>
+      <ul class="the-breed">
         <li class="breed-match">{{ name }}</li>
+        <li>
+          <a href="{{ url }}" target="_blank">Learn about this breed!</a>
+        </li>
       </ul>
     </script>
 
@@ -138,16 +141,26 @@
                 <img src="/img/Exclamation_mark.png" alt="!">
                 Please select at least one size.
               </div>
-              <input type="checkbox" id="size1" name="size1">
-              <label for="size1">Tiny, under 15lbs</label>
-              <input type="checkbox" id="size2" name="size2">
-              <label for="size2">Small, under 30lbs</label>
-              <input type="checkbox" id="size3" name="size3">
-              <label for="size3">Medium, 30-60lbs</label>
-              <input type="checkbox" id="size4" name="size4">
-              <label for="size4">Large, 60-90lbs</label>
-              <input type="checkbox" id="size5" name="size5">
-              <label for="size5">Giant, over 90lbs</label>
+              <div class="checkbox">
+                <input type="checkbox" id="size1" name="size1">
+                <label for="size1">Tiny, under 15lbs</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="size2" name="size2">
+                <label for="size2">Small, under 30lbs</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="size3" name="size3">
+                <label for="size3">Medium, 30-60lbs</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="size4" name="size4">
+                <label for="size4">Large, 60-90lbs</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="size5" name="size5">
+                <label for="size5">Giant, over 90lbs</label>
+              </div>
             </div>
             <div class="trainable">
               <p>How much experience do you have training dogs?</p>
@@ -187,6 +200,10 @@
               <p>Please enter your 5 digit zip code to see your matches! </p><input required id="zipCode" type="text" pattern="[0-9]{5}" title="Five digit zip code" placeholder="Five digit zip code" />
             </div>
             <div class="submit">
+              <div class="hidden-alert">
+                <img src="/img/Exclamation_mark.png" alt="!">
+                Please fill out size above.
+              </div>
               <input type="submit" name="submit" value="See Your Breeds!">
             </div>
           </form>
@@ -205,10 +222,10 @@
 
     </div>
     <section id="about">
-      <h1>About Us</h1>
+      <h2>About Us</h2>
        <section class="about-us">
         <div class="members">
-          <img src="/img/mark_1024.jpg"></img>
+          <img class="portrait" src="/img/mark_1024.jpg"></img>
           <h3>Mark Reynoso</h3>
           <p>Mark hails from the Island of Whidbey in the great Pacific Northwest. He has found his way into the wonderful
           world of coding via non-profit fundraising and someday hopes to marry the two paths into some useful technology to benefit those in need.
@@ -220,9 +237,9 @@
         </div>
 
         <div class="members">
-          <img src="/img/kinley.jpg"></img>
+          <img class="portrait" src="/img/kinley.jpg"></img>
           <h3>Kinley Ramson</h3>
-          <p>Kinley enjoys spending her free time with her dog Asha. She is looking forward to graduating as a Full Stack Python Developer.</p>
+          <p>Kinley dskfjherilfugerhkjsfhalkdjfhladkjfi.</p>
           <div class="socialMedia">
             <a href="https://github.com/nothingnessbird"><img src="/img/github.png"></img></a>
             <a href=""><img src="/img/linkedin.png"></img></a>
@@ -231,9 +248,9 @@
 
 
         <div class="members">
-        <img src="/img/brian.jpg"></img>
+        <img class="portrait" src="/img/brian.jpg"></img>
           <h3>Brian Wheeler</h3>
-          <p>Bryan is from Arlington Washington. He is looking forward to graduating as a Full Stack Python Developer.</p>
+          <p>BryEYEan is from Arlington Washington. He is looking forward to graduating as a Full Stack Python Developer.</p>
           <div class="socialMedia">
             <a href="https://github.com/PoundsXD"><img src="/img/github.png"></img></a>
             <a href=""><img src="/img/linkedin.png"></img></a>
@@ -242,7 +259,7 @@
 
 
        <div class="members">
-        <img src="/img/daniel.JPG"></img>
+        <img class="portrait" src="/img/daniel.JPG"></img>
           <h3>Daniel Pillay</h3>
           <p>Daniel was born and raised in Mountlake Terrace, Washington. He joined the Air Force in 2013  which led him to Japan and Oklahoma City. On his free time, he enjoys training Brazilian Jiu Jitsu and watching combat sports. His aspires to graduate Code Fellows as a Full Stack JavaScript Developer. </p>
             <div class="socialMedia">
@@ -254,7 +271,7 @@
 
 
         <div class="members">
-          <img src="/img/asha.jpg"></img>
+          <img class="portrait" src="/img/asha.jpg"></img>
           <h3>Asha Ramson</h3>
           <p>I'm a service dog. Woof!</p>
         </div>
@@ -263,7 +280,7 @@
   </main>
 
   <footer>
-    <p>Copyright: Mark Reynoso, Kinley Ramson, Brian Wheeler, Daniel Pillay 2017</p>
+    <p>	&copy; Mark Reynoso, Kinley Ramson, Brian Wheeler, Daniel Pillay 2017</p>
   </footer>
 
   </body>

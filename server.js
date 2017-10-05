@@ -160,6 +160,10 @@ APP.get('/results', function(request, response){
   response.sendFile('index.html', {root: './public'})
 })
 
+APP.get('/about', function(request, response){
+  response.sendFile('index.html', {root: './public'})
+})
+
 APP.get('*', (request, response) => {
   response.sendFile('404.html', {root: './public'})
 })

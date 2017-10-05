@@ -75,11 +75,11 @@ var app = app || {};
             apiLoop(callback, data.zip);
           }
         })
-              
+
         page('/results');
-        
+
       }else {
-        $('.hidden-alert').show().delay(5000).fadeOut(1500);
+        $('.hidden-alert').show().delay(8000).fadeOut(1500);
       }
 
     });
