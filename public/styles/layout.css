@@ -10,7 +10,7 @@ header{
   left: 0;
 }
 
-#navlist{
+#navlist {
   list-style-type: none;
   display: none;
   text-align: center;
@@ -18,10 +18,12 @@ header{
 
 }
 #navlist li{
-  border: 1px solid white;
+  border: 1px solid aquamarine;
   margin: auto;
   width: 40%;
   padding: 5px 0px;
+  border-radius: 2em;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 #navlist a{
 text-decoration: none;
@@ -53,6 +55,12 @@ footer {
   font-size: 10px;
   padding: 10px;
 }
+
+
+#topnav:hover ul {
+  display: block;
+}
+
 
 @media (min-width: 650px){
   h1{

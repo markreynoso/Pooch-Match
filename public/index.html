@@ -29,7 +29,7 @@
         <div>
           <h2><span class="label">Name:</span> {{ name }}</h2>
           <p><span class="label">Sex:</span> {{ sex }}</p>
-          <p><span class="label">Breeds:</span> {{#each breeds}} <span>{{this}}</span> {{/each}}</p>
+          <p><span class="label">Breeds:</span> {{#each breeds}} <span>{{this}}</span> {{/each}}</p> <br />
           <p><span class="label">Contact: </span><ul>
             {{#if address}}
               <li>
@@ -41,16 +41,6 @@
                 {{city}}
               </li>
             {{/if}}
-            {{#if email}}
-              <li>
-                {{email}}
-              </li>
-            {{/if}}
-            {{#if phone}}
-              <li>
-                {{phone}}
-              </li>
-            {{/if}}
             {{#if state}}
               <li>
                 {{state}}
@@ -60,6 +50,16 @@
               <li>
                 {{zip}}
               </li>
+            {{/if}}
+            {{#if email}}
+            <li>
+              {{email}}
+            </li>
+            {{/if}}
+            {{#if phone}}
+            <li>
+              {{phone}}
+            </li>
             {{/if}}
           </ul></p>
         </div>
@@ -127,7 +127,7 @@
               <label for="kids">Yes</label>
             </div>
             <div class="energy">
-              <p>How many hours a week will spend exercising your new dog?</p>
+              <p>How many hours a week will you spend exercising your new dog?</p>
               <select required id="energy" name="energy">
                 <option value="" selected disabled>Choose One</option>
                 <option value="1">2-4</option>
