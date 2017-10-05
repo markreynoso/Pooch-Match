@@ -29,32 +29,3 @@ footer {
 #navlist li {
   background-color: rgba(240, 229, 229, 0.5);
 }
-.about-us{
-  text-align: center;
-  padding-bottom: 20px;
-}
-
-.members{
-  border: 1px solid black;
-  width: 60%;
-  background-color: rgba(15, 14, 14, 0.7);
-  margin: 0px auto;
-  color: white;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
-  padding-bottom: 10px;
-
-}
-.members img{
-  height: 70%;
-  width: 50%;
-}
-.members h3{
-  color: blue;
-  font-size: 4vh;
-}
-
-.socialMedia img{
-  height: 6vh;
-  width: 6vh;
-}

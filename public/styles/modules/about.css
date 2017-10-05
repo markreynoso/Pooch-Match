@@ -1,0 +1,35 @@
+.about-us{
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.members{
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 60%;
+  background-color: rgba(15, 14, 14, 0.7);
+  margin: 0px auto;
+  color: white;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  padding-bottom: 10px;
+
+}
+.members img{
+  height: 70%;
+  width: 50%;
+  margin: 10px;
+}
+.members h3{
+  color: blue;
+  font-size: 4vh;
+  font-weight: bold;
+  background-color: rgba(240, 229, 229, 0.5);
+}
+.members p{
+  padding-top: 5px;
+}
+.socialMedia img{
+  height: 6vh;
+  width: 6vh;
+}
