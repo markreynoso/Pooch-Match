@@ -1,0 +1,53 @@
+#noBreeds, #noPets{
+  width: 60vw;
+  margin: 20vh auto;
+  text-align: center;
+  background-color: rgba(231, 18, 18, 0.59);
+  border: medium solid red;
+  border-radius: 1.5em;
+  color: white;
+  padding: 2em;
+}
+
+.the-breed {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  width: 70vw;
+  margin: auto;
+  text-align: center;
+  padding: 2vh;
+  border-radius: 1.5em;
+  margin-top: 1vh;
+}
+
+.the-breed a {
+  text-decoration: none;
+  color: aquamarine;
+}
+
+.the-breed a:hover {
+  color: purple;
+}
+
+.the-breed a:visited {
+  color: orange;
+}
+
+.breed-match {
+  padding: 5px;
+  background-color: rgba(255, 255, 255, .7);
+  color: black;
+  border-radius: 10em;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  cursor:pointer;
+}
+
+@media (min-width: 650px) {
+  #results {
+    padding-top: 10vh;
+  }
+  .the-breed {
+    width: 40vw;
+  }
+}

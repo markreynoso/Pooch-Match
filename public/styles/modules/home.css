@@ -1,0 +1,48 @@
+#instructions {
+  color: white;
+  width: 90vw;
+  margin: auto;
+}
+#welcome-div{
+  background-color: rgba(12, 201, 232, 0.84);
+  border-radius: 2em 2em 0em 0em;
+  box-shadow: 1.2em 1.2em 1.5em rgba(0, 0, 0, 0.93);
+}
+#welcome{
+  text-align: center;
+  padding: 3px;
+}
+
+#tagline-div{
+  background-color: rgba(28, 36, 204, 0.84);
+  padding-bottom: 5px;
+  border-radius: 0em 0em 2em 2em;
+  box-shadow: 1.2em 1.2em 1.5em rgba(0, 0, 0, 0.93);
+}
+#show-quiz{
+  border-radius: .2em;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0.5em 0.5em 1.5em rgba(0, 0, 0, 0.93);
+}
+#tagline{
+  text-align: center;
+}
+
+#home-body{
+  padding: 20px;
+  margin-top: 1vh;
+  background-color: rgba(0, 0, 0, 0.73);
+  border-radius: .4em;
+  box-shadow: 1.1em 1.2em 1.5em rgba(0, 0, 0, 0.93);
+}
+
+@media (min-width: 650px){
+
+  #instructions{
+    max-width: 700px;
+  }
+  #home-body{
+    padding: 3vw 6vw;
+    line-height: 120%;
+  }
+}

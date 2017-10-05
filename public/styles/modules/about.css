@@ -1,0 +1,62 @@
+.about-us{
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.members{
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 85vw;
+  background-color: rgba(15, 14, 14, 0.7);
+  margin: 0px auto;
+  color: white;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  padding-bottom: 10px;
+  line-height: 1.3em;
+
+}
+.portrait {
+  height: 70%;
+  width: 50%;
+  margin: 10px;
+  border-radius: 1em;
+  border: thick groove aquamarine;
+}
+.members h3{
+  color: blue;
+  font-size: 4vh;
+  font-weight: bold;
+  background-color: rgba(240, 229, 229, 0.5);
+  width: 60%;
+  margin: auto;
+  border-radius: 1em;
+  padding: .2em;
+}
+.members p{
+  padding: 1em;
+}
+.socialMedia img{
+  height: 6vh;
+  width: 6vh;
+}
+
+#about h2 {
+  text-align: center;
+  width: 70vw;
+  margin: auto;
+  padding: .5em;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2em;
+  background-color: rgba(147, 140, 139, 0.61);
+  font-weight: bold;
+}
+
+@media (min-width: 650px) {
+  #about h2 {
+    margin-top: 10vh;
+  }
+  .members {
+    width: 60vw;
+  }
+}

@@ -1,5 +1,6 @@
 'use strict';
 
-$('#menu-icon').on('click', function(){
-  $('#navlist').toggle();
-});
+
+$(window).on('resize', function(){
+  window.screen.width > 650 ? $('#navlist').show() : $('#navlist').hide();
+})

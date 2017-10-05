@@ -1,0 +1,20 @@
+.adoptable {
+  text-align: center;
+  background-color: rgba(0, 0, 0, .7);
+  color: white;
+  width: 70vw;
+  border-radius: 2em;
+  padding: 2em;
+  margin: 2em auto;
+  line-height: 1.3em;
+}
+.adoptable div img {
+  width: 40vw;
+  height: auto;
+  border-radius: 3em;
+  border: thick groove aquamarine;
+}
+.label {
+  font-family: 'Courgette', cursive;
+  font-size: 3vh;
+}

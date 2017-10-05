@@ -6,9 +6,19 @@ var app = app || {};
 
   resultsController.index = () => {
     $('#results').show().siblings().hide();
-    $('#results-link').hide();
+    $('#results-link').show();
+    module.breedListener();
   };
 
+  module.breedListener = function(){
+    $('#breedList').off('click').on('click', '.breed-match', function(event){
+      event.stopPropagation();
+      console.log(event);
+      $('#breedList').hide();
+      $('#breedSelection').show();
+      app.appendMatches(event);
+    })
+  }
   module.resultsController = resultsController;
 
 })(app);
