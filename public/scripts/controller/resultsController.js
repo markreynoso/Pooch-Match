@@ -9,8 +9,11 @@ var app = app || {};
     $('#results-link').hide();
     module.breedListener();
   };
+
   module.breedListener = function(){
     $('#breedList').off('click').on('click', '.breed-match', function(event){
+      $('#breedList').hide();
+      $('#breedSelection').show();
       event.stopPropagation();
       app.appendMatches(event);
     })
