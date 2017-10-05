@@ -59,7 +59,7 @@ function queryMaker(data){
   if(data.allergy === 'true'){
     query1 = `allergies=true`
   }else{
-    query1 = `allergies=true OR allergies=false`
+    query1 = `(allergies=true OR allergies=false)`
   }
 
   if(data.kids === 'true'){
@@ -136,6 +136,7 @@ function queryMaker(data){
   }else{
     query13 = query12;
   }
+  console.log(query13);
   return query13;
 }
 

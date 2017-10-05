@@ -222,8 +222,8 @@
 }, {
 	"dogapi": "clumber",
 	"name": "Clumber Spaniel",
-	"size": "http://www.vetstreet.com/dogs/clumber-spaniel",
-	"url": "longhair",
+	"size": "large",
+	"url": "http://www.vetstreet.com/dogs/clumber-spaniel",
 	"grooming": 8,
 	"activityLevel": 6,
 	"kids": true,

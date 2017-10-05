@@ -124,15 +124,19 @@
             </div>
             <div class="energy">
               <p>How many hours a week will spend exercising your new dog?</p>
-              <select id="energy" name="energy">
-                <option selected disabled>Choose One</option>
+              <select required id="energy" name="energy">
+                <option value="" selected disabled>Choose One</option>
                 <option value="1">2-4</option>
                 <option value="2">4-6</option>
                 <option value="3">7+</option>
               </select>
             </div>
-            <div class="size">
+            <div class="size checkbox-group required">
               <p>How big of a dog are you interested in getting? Choose all that apply.</p>
+              <div class="hidden-alert">
+                <img src="/img/Exclamation_mark.png" alt="!">
+                Please select at least one size.
+              </div>
               <input type="checkbox" id="size1" name="size1">
               <label for="size1">Tiny, under 15lbs</label>
               <input type="checkbox" id="size2" name="size2">
@@ -146,8 +150,8 @@
             </div>
             <div class="trainable">
               <p>How much experience do you have training dogs?</p>
-              <select id="trainable" name="trainable">
-                <option selected disabled>Choose One</option>
+              <select required id="trainable" name="trainable">
+                <option value="" selected disabled>Choose One</option>
                 <option value="1">I've never trained a dog before.</option>
                 <option value="2">I've taught a dog to sit but not much more.</option>
                 <option value="3">I've trained a dog to be well-behaved</option>
@@ -156,8 +160,8 @@
             </div>
             <div class="grooming">
               <p>How much effort are you willing to spend on grooming your dog?</p>
-              <select id="grooming" name="">
-                <option selected disabled>Choose One</option>
+              <select required id="grooming" name="">
+                <option value="" selected disabled>Choose One</option>
                 <option value="1">I'm happy to brush the dog weekly but not much more.</option>
                 <option value="2">I can handle a shaggy dog that needs brushing, but I draw the line at giving haircuts.</option>
                 <option value="3">Bring on the fancy pooches, I love grooming or I'm willing to pay a groomer.</option>
@@ -170,16 +174,19 @@
             </div>
             <div class="sheds">
               <p>All dogs shed, but some more than others. Are you okay with a dog that sheds more than minimally?</p>
-              <input type="checkbox" id="sheds" name="sheds">
+              <input checked type="checkbox" id="sheds" name="sheds">
               <label for="sheds">Yes</label>
             </div>
             <div class="yard">
               <p>Do you have a yard for your furry friend?</p>
-              <input type="checkbox" id="yard" name="yard">
+              <input checked type="checkbox" id="yard" name="yard">
               <label for="yard">Yes</label>
             </div>
             <div class="zip">
-              <p>Please enter your 5 digit zip code to see your matches! </p><input id="zipCode" type="text" pattern="[0-9]{5}" title="Five digit zip code" placeholder="Five digit zip code" />
+              <p>Please enter your 5 digit zip code to see your matches! </p><input required id="zipCode" type="text" pattern="[0-9]{5}" title="Five digit zip code" placeholder="Five digit zip code" />
+            </div>
+            <div class="submit">
+              <input type="submit" name="submit" value="See Your Breeds!">
             </div>
           </form>
         </div>
