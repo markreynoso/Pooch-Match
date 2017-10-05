@@ -5,6 +5,9 @@ header{
 
 #topnav{
   width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 #navlist{
@@ -23,28 +26,30 @@ header{
 #navlist a{
 text-decoration: none;
 }
-
 #hamburger{
   width: 100%;
 }
 
 #menu-icon{
-  position: absolute;
+  position: fixed;
   width: 20vw;
-  float: right;
-  top: 8px;
-  right: 8px;
+  top: 15px;
+  right: 15px;
 }
 
 h1{
-  padding-top: 8px;
-  padding-bottom: 20px;
-  font-size: 30px;
+  padding-top: 4vh;
+  padding-bottom: 4vh;
   text-align: center;
+  font-family: 'Molle', cursive;
+  font-size: 4vh;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 #welcome-div{
-  background-color: gray;
+  background-color: rgba(12, 201, 232, 0.84);
+  border-radius: 2em 2em 0em 0em;
+  box-shadow: 1.2em 1.2em 1.5em rgba(0, 0, 0, 0.93);
 }
 #welcome{
   text-align: center;
@@ -52,8 +57,15 @@ h1{
 }
 
 #tagline-div{
-  background-color: blue;
+  background-color: rgba(28, 36, 204, 0.84);
   padding-bottom: 5px;
+  border-radius: 0em 0em 2em 2em;
+  box-shadow: 1.2em 1.2em 1.5em rgba(0, 0, 0, 0.93);
+}
+#show-quiz{
+  border-radius: .2em;
+  background-color: rgba(255, 255, 255, 0.34);
+  box-shadow: 0.5em 0.5em 1.5em rgba(0, 0, 0, 0.93);
 }
 #tagline{
   text-align: center;
@@ -61,8 +73,51 @@ h1{
 
 #home-body{
   padding: 20px;
+  margin-top: 1vh;
+  background-color: rgba(0, 0, 0, 0.73);
+  border-radius: .4em;
+  box-shadow: 1.1em 1.2em 1.5em rgba(0, 0, 0, 0.93);
 }
 
 footer{
   padding: 20px;
+}
+#quiz{
+  padding-top: 10vh;
+}
+
+@media (min-width: 650px){
+  h1{
+    font-size: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  #menu-icon{
+    display: none;
+  }
+  #navlist{
+    display: inline-block;
+    margin: auto;
+  }
+  .menu{
+    width: 100%;
+    text-align: center;
+ }
+  #navlist li{
+    width: 200px;
+    display: inline-block;
+    color: darkgrey;
+    font-size: 30px;
+  }
+  #instructions{
+    /*padding: 0 5vw 0 5vw;*/
+    max-width: 700px;
+  }
+  #home-body{
+    padding: 3vw 6vw;
+    line-height: 120%;
+  }
+  #quiz{
+    padding-top: 20vh;
+  }
 }
