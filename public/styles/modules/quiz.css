@@ -1,0 +1,10 @@
+.allergy, .kids, .energy, .size, .trainable, .grooming, .drools, .sheds, .yard, .zip{
+  background-color: rgba(0, 0, 0, 0.63);
+  border: 1px solid rgba(0, 0, 0, 0.63);
+  border-radius: .4em;
+  margin: auto;
+  width: 90vw;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+}
