@@ -11,3 +11,7 @@ $('#menu-icon').on('click', function(){
 $(window).on('resize', function(){
   window.screen.width > 650 ? $('#navlist').show() : $('#navlist').hide();
 })
+
+// $('#noBreeds').on('click', function(){
+//   app.quizController.index();
+// })

@@ -18,7 +18,7 @@ var app = app || {};
   }
 
   function filterPets(response) {
-    
+
     for (var i = 0; i < response.petfinder.pets.pet.length; i++) {
       app.adoptablePets.push(new app.AdoptablePet(
         response.petfinder.pets.pet[i].name.$t,
@@ -61,9 +61,26 @@ var app = app || {};
       };
 
       $.get('/dbpull', data)
-        .then(results => app.dogData = results)
-        .then(() => apiLoop(callback, data.zip));
+        .then(results => {
+          console.log(results.length);
+          if(results.length === 0){
+            $('main').append(`<div id="noBreeds"><h3>Sorry, no breeds match your responses.</h3><p>If you'd like to change your answers and try again, click below.</p><button name="trAgain">Try Again</button></div>`);
+            $('#noBreeds').on('click', function(){
+              $('#noBreeds').remove();
+              page('/');
+              $('#instructions').hide();
+              $('#the-quiz').show();
+            })
+          } else{
+            console.log('results');
+            app.dogData = results;
+            apiLoop(callback, data.zip);
+          }
+        })
       page('/results');
+      // .then(results => app.dogData = results)
+      //   .then(() => apiLoop(callback, data.zip));
+      // page('/results');
     });
   }
 
