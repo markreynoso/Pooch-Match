@@ -20,7 +20,7 @@ main {
 }
 footer {
   position: fixed;
-  z-index: -30;
+  z-index: 0;
   width: 100vw;
   bottom: 0;
   background-color: rgba(15, 14, 14, 0.7);
