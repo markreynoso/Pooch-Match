@@ -11,9 +11,9 @@ var app = app || {};
       let breed = app.dogData[i];
       callback(breed);
       $.get(`/find/${app.dogData[i].name}/${zip}`)
-      .then(function (response) {
-        filterPets(response)
-      })
+        .then(function (response) {
+          filterPets(response)
+        })
     }
   }
 
@@ -62,22 +62,22 @@ var app = app || {};
 
         $.get('/dbpull', data)
         .then(results => {
-          console.log(results.length);
           if(results.length === 0){
-            $('main').append(`<div id="noBreeds"><h3>Sorry, no breeds match your responses.</h3><p>If you'd like to change your answers and try again, click below.</p><button name="trAgain">Try Again</button></div>`);
+            $('main').append(`<div id="noBreeds"><h3>Sorry, no breeds match your responses.</h3><p>If you'd like to change your answers and try again, click below.</p><button name="tryAgain">Try Again</button></div>`);
             $('#noBreeds').on('click', function(){
-              $('#noBreeds').remove();
+              $('#noBreeds button').remove();
               page('/');
               $('#instructions').hide();
               $('#the-quiz').show();
             })
           } else{
-            console.log('results');
             app.dogData = results;
             apiLoop(callback, data.zip);
           }
         })
+              
         page('/results');
+        
       }else {
         $('.hidden-alert').show().delay(5000).fadeOut(1500);
       }
