@@ -9,3 +9,9 @@ page('/results', app.resultsController.index);
 page('/about', app.aboutController.index);
 
 page();
+
+$('#results-link').on('click', function(){
+  $('#breedSelection').hide();
+  $('#breedList').show();
+  app.resultsController.index();
+});

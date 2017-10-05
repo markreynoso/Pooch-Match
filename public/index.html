@@ -5,12 +5,14 @@
     <title>Pooch Match</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Molle:400i|Raleway" rel="stylesheet">
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
-    <link rel="stylesheet" href="styles/home.css">
-    <link rel="stylesheet" href="styles/about.css">
-    <link rel="stylesheet" href="styles/404.css">
+    <link rel="stylesheet" href="styles/modules/quiz.css">
+    <link rel="stylesheet" href="styles/modules/home.css">
+    <link rel="stylesheet" href="styles/modules/adoptable.css">
+    <link rel="stylesheet" href="styles/modules/breedmatch.css">
 
     <link href="http://downloadicons.net/sites/default/files/dog-icon-86470.png" rel="icon" type="image/x-icon" />
 
@@ -24,17 +26,48 @@
           <img src="{{ picture }}"></img>
         </div>
         <div>
-          <h2>Name: {{ name }}</h2>
-          <p>Sex: {{ sex }}</p>
-          <p>Breeds: {{#each breeds}} <span>{{this}}</span> {{/each}}</p>
-          <p>Contact: <ul>{{#each contact}} <li>{{this}}</li> {{/each}}</ul></p>
+          <h2><span class="label">Name:</span> {{ name }}</h2>
+          <p><span class="label">Sex:</span> {{ sex }}</p>
+          <p><span class="label">Breeds:</span> {{#each breeds}} <span>{{this}}</span> {{/each}}</p>
+          <p><span class="label">Contact: </span><ul>
+            {{#if address}}
+              <li>
+                {{address}}
+              </li>
+            {{/if}}
+            {{#if city}}
+              <li>
+                {{city}}
+              </li>
+            {{/if}}
+            {{#if email}}
+              <li>
+                {{email}}
+              </li>
+            {{/if}}
+            {{#if phone}}
+              <li>
+                {{phone}}
+              </li>
+            {{/if}}
+            {{#if state}}
+              <li>
+                {{state}}
+              </li>
+            {{/if}}
+            {{#if zip}}
+              <li>
+                {{zip}}
+              </li>
+            {{/if}}
+          </ul></p>
         </div>
       </section>
     </script>
 
     <script id="breedMatch-template" type="text/x-handlebars-template">
       <ul>
-        <a href="/somethingidc" target="_blank"><li>{{ name }}</li></a>
+        <li class="breed-match">{{ name }}</li>
       </ul>
     </script>
 
@@ -47,13 +80,18 @@
         <img id="hamburger" src="img/dachshundburgermenu.png"></img>
       </div>
       <h1>Pooch Match</h1>
-      <ul id="navlist">
-        <li><a href="/">Home</a></li>
-        <li><a id="results-link" href="/results">Your Matches</a></li>
-        <li><a href="/about">About</a></li>
-      <ul>
+      <div class="menu">
+        <ul id="navlist">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li id="results-link"><a href="/results">Your Matches</a></li>
+        </ul>
+      </div>
     </nav>
   </header>
+  <div class="background-image">
+    <img src="/img/park.jpg" alt="a park">
+  </div>
   <main>
     <section id="quiz">
       <div class="quiz-page" id="instructions">
@@ -64,9 +102,9 @@
           <h3 id="tagline">Find your new best friend!</h3>
         </div>
         <div id="home-body">
-          <p>Are you interested in adding a new dog to your household? Pooch Match is here to help you find your best possible new best friend!</p>
-          <p>We have made a quiz, designed to help you find the dog breeds that match best with your lifestyle and preferences, so that your pup is exactly what you need.</p>
-          <p>Then, we take your breed matches, and find you adoptable dogs near you, in the breeds that suit your life. Are you ready to see what dogs are out there waiting for you?</p>
+          <p>Are you interested in adding a new dog to your household? Pooch Match is here to help you find your best possible new best friend!</p> <br>
+          <p>We have made a quiz, designed to help you find the dog breeds that match best with your lifestyle and preferences, so that your pup is exactly what you need.</p> <br>
+          <p>Then, we take your breed matches, and find you adoptable dogs near you, in the breeds that suit your life. Are you ready to see what dogs are out there waiting for you?</p> <br>
           <button type="button" id="show-quiz">Take the Quiz!</button>
         </div>
       </div>
@@ -162,48 +200,52 @@
       <h1>About Us</h1>
        <section class="about-us">
         <div class="members">
-          <img src="http://fillmurray.com/200/300"></img>
+          <img src="/img/mark_1024.jpg"></img>
           <h3>Mark Reynoso</h3>
-          <p>somet text about the individual that lets us know more about them</p>
-           <div class="socialMedia">
-            <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img><a>
-           <div>
+          <p>Mark hails from the Island of Whidbey in the great Pacific Northwest. He has found his way into the wonderful
+          world of coding via non-profit fundraising and someday hopes to marry the two paths into some useful technology to benefit those in need.
+          For fun, you might find Mark playing on his boat, hiking in the mountains, or just hanging out with his wife Janna and two little boys, Silas and Caleb.</p>
+          <div class="socialMedia">
+            <a href=""><img src="/img/github.png"></img</a>
+            <a href=""><img src="/img/linkedin.png"></img</a>
+          </div>
         </div>
 
         <div class="members">
-          <img src="http://fillmurray.com/200/300"></img>
+          <img src="/img/kinley.jpg"></img>
           <h3>Kinley Ramson</h3>
           <p>somet text about the individual that lets us know more about them</p>
           <div class="socialMedia">
-           <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img><a>
-          <div>
+            <a><img src="/img/github.png"></img</a>
+            <a><img href="" src="public/img/linkedin.png"></img</a>
+          </div>
         </div>
 
+
         <div class="members">
-        <img src="http://fillmurray.com/200/300"></img>
+        <img src="/img/brian.jpg"></img>
           <h3>Brian Wheeler</h3>
           <p>somet text about the individual that lets us know more about them</p>
           <div class="socialMedia">
-           <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img><a>
-          <div>
+            <a><img src="/img/github.png"></img</a>
+            <a><img href="" src="public/img/linkedin.png"></img</a>
+          </div>
         </div>
 
        <div class="members">
-        <img src="http://fillmurray.com/200/300"></img>
+        <img src="/img/daniel.JPG"></img>
           <h3>Daniel Pillay</h3>
-          <p>somet text about the individual that lets us know more about them</p>
+          <p>Daniel was born and raised in Mountlake Terrace, Washington. He joined the Air Force in 2013  which led him to Japan and Oklahoma City. On his free time, he enjoys training Brazilian Jiu Jitsu and watching combat sports. His aspires to graduate Code Fellows as a Full Stack JavaScript Developer. </p>
           <div class="socialMedia">
-           <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img><a>
-          <div>
+            <a href=""><img src="/img/github.png"></img</a>
+
+          </div>
         </div>
 
         <div class="members">
-          <img src="http://fillmurray.com/200/300"></img>
+          <img src="/img/asha.jpg"></img>
           <h3>Asha Ramson</h3>
-          <p>somet text about the individual that lets us know more about them</p>
-          <div class="socialMedia">
-           <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img></a>
-          <div>
+          <p>Woof! </p>
         </div>
       </section>
     </section>

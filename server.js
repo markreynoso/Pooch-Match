@@ -28,7 +28,7 @@ function makeTable(request, response){
       dogapi VARCHAR(255) UNIQUE,
       name VARCHAR(255),
       size VARCHAR(255),
-      fur VARCHAR(255),
+      url VARCHAR(255),
       grooming INTEGER,
       activityLevel INTEGER,
       kids BOOLEAN,
@@ -44,7 +44,7 @@ function makeTable(request, response){
 function loadDogs(){
   FS.readFile('./public/data/breeds.json', (err, fd) => {
     JSON.parse(fd.toString()).forEach(ele => {
-      CLIENT.query(`INSERT INTO dogs(dogapi, name, size, fur, grooming, activityLevel, kids, drools, trainable, needsYard, allergies, sheds) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) ON CONFLICT (dogapi) DO NOTHING`, [ele.dogapi, ele.name, ele.size, ele.fur, ele.grooming, ele.activityLevel, ele.kids, ele.drools, ele.trainable, ele.needsYard, ele.allergies, ele.sheds])
+      CLIENT.query(`INSERT INTO dogs(dogapi, name, size, url, grooming, activityLevel, kids, drools, trainable, needsYard, allergies, sheds) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) ON CONFLICT (dogapi) DO NOTHING`, [ele.dogapi, ele.name, ele.size, ele.url, ele.grooming, ele.activityLevel, ele.kids, ele.drools, ele.trainable, ele.needsYard, ele.allergies, ele.sheds])
         .catch(function(err){
           console.error(ele.name + ' broken\n' + err);
         });
@@ -136,28 +136,19 @@ function queryMaker(data){
   }else{
     query13 = query12;
   }
-  console.log(query13);
   return query13;
 }
-// function petFinderCall(request, response, currentDog){
-//   console.log(request.query.zip);
-//   (REQUESTPROXY({
-//     url: `http://api.petfinder.com/pet.find`,
-//     query: {key: `f6a8dafe70de07dbc2e288483f909123`, breed: `${currentDog.name}`, location: `${request.query.zip}`}
-//   }))(request, response);
-// }
+
 APP.get('/dbpull', function(request, response){
-  console.log(request.query);
-  CLIENT.query(`SELECT name, dogapi FROM dogs WHERE ${queryMaker(request.query)}`)
+
+  CLIENT.query(`SELECT name, url FROM dogs WHERE ${queryMaker(request.query)}`)
   .then(result => {
-    console.log(result);
     response.send(result.rows);
   })
   .catch(console.error)
 })
 
 APP.get('/find/:breed/:zip', function(request, response){
-  console.log(request.params);
   (REQUESTPROXY({
     url: `http://api.petfinder.com/pet.find`,
     query: {key: `f6a8dafe70de07dbc2e288483f909123`, breed: `${request.params.breed}`, location: `${request.params.zip}`, format: `json`}
