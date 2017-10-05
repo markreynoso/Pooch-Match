@@ -136,28 +136,19 @@ function queryMaker(data){
   }else{
     query13 = query12;
   }
-  console.log(query13);
   return query13;
 }
-// function petFinderCall(request, response, currentDog){
-//   console.log(request.query.zip);
-//   (REQUESTPROXY({
-//     url: `http://api.petfinder.com/pet.find`,
-//     query: {key: `f6a8dafe70de07dbc2e288483f909123`, breed: `${currentDog.name}`, location: `${request.query.zip}`}
-//   }))(request, response);
-// }
+
 APP.get('/dbpull', function(request, response){
-  console.log(request.query);
+
   CLIENT.query(`SELECT name, url FROM dogs WHERE ${queryMaker(request.query)}`)
   .then(result => {
-    console.log(result);
     response.send(result.rows);
   })
   .catch(console.error)
 })
 
 APP.get('/find/:breed/:zip', function(request, response){
-  console.log(request.params);
   (REQUESTPROXY({
     url: `http://api.petfinder.com/pet.find`,
     query: {key: `f6a8dafe70de07dbc2e288483f909123`, breed: `${request.params.breed}`, location: `${request.params.zip}`, format: `json`}

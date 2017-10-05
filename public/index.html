@@ -5,12 +5,14 @@
     <title>Pooch Match</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Molle:400i|Raleway" rel="stylesheet">
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
-    <link rel="stylesheet" href="styles/home.css">
-    <link rel="stylesheet" href="styles/about.css">
-    <link rel="stylesheet" href="styles/404.css">
+    <link rel="stylesheet" href="styles/modules/quiz.css">
+    <link rel="stylesheet" href="styles/modules/home.css">
+    <link rel="stylesheet" href="styles/modules/adoptable.css">
+    <link rel="stylesheet" href="styles/modules/breedmatch.css">
 
     <link href="http://downloadicons.net/sites/default/files/dog-icon-86470.png" rel="icon" type="image/x-icon" />
 
@@ -24,17 +26,48 @@
           <img src="{{ picture }}"></img>
         </div>
         <div>
-          <h2>Name: {{ name }}</h2>
-          <p>Sex: {{ sex }}</p>
-          <p>Breeds: {{#each breeds}} <span>{{this}}</span> {{/each}}</p>
-          <p>Contact: <ul>{{#each contact}} <li>{{this}}</li> {{/each}}</ul></p>
+          <h2><span class="label">Name:</span> {{ name }}</h2>
+          <p><span class="label">Sex:</span> {{ sex }}</p>
+          <p><span class="label">Breeds:</span> {{#each breeds}} <span>{{this}}</span> {{/each}}</p>
+          <p><span class="label">Contact: </span><ul>
+            {{#if address}}
+              <li>
+                {{address}}
+              </li>
+            {{/if}}
+            {{#if city}}
+              <li>
+                {{city}}
+              </li>
+            {{/if}}
+            {{#if email}}
+              <li>
+                {{email}}
+              </li>
+            {{/if}}
+            {{#if phone}}
+              <li>
+                {{phone}}
+              </li>
+            {{/if}}
+            {{#if state}}
+              <li>
+                {{state}}
+              </li>
+            {{/if}}
+            {{#if zip}}
+              <li>
+                {{zip}}
+              </li>
+            {{/if}}
+          </ul></p>
         </div>
       </section>
     </script>
 
     <script id="breedMatch-template" type="text/x-handlebars-template">
       <ul>
-        <a href="/somethingidc" target="_blank"><li>{{ name }}</li></a>
+        <li class="breed-match">{{ name }}</li>
       </ul>
     </script>
 
@@ -43,22 +76,22 @@
 
   <header>
     <nav id="topnav">
-
-    <div id="menu-icon">
-      <img id="hamburger" src="img/dachshundburgermenu.png"></img>
-    </div>
-    <h1>Pooch Match</h1>
-
-    <ul id="navlist">
-      <li><a href="/">Home</a></li>
-      <li><a id="results-link" href="/results">Your Matches</a></li>
-      <li><a href="/about">About</a></li>
-    <ul>
+      <div id="menu-icon">
+        <img id="hamburger" src="img/dachshundburgermenu.png"></img>
+      </div>
+      <h1>Pooch Match</h1>
+      <div class="menu">
+        <ul id="navlist">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a id="results-link" href="/results">Your Matches</a></li>
+        </ul>
+      </div>
     </nav>
-
-    </header>
-
-
+  </header>
+  <div class="background-image">
+    <img src="/img/park.jpg" alt="a park">
+  </div>
   <main>
     <section id="quiz">
       <div class="quiz-page" id="instructions">
@@ -69,10 +102,11 @@
           <h3 id="tagline">Find your new best friend!</h3>
         </div>
         <div id="home-body">
-        <p>Are you interested in adding a new dog to your household? Pooch Match is here to help you find your best possible new best friend!</p>
-        <p>We have made a quiz, designed to help you find the dog breeds that match best with your lifestyle and preferences, so that your pup is exactly what you need.</p>
-        <p>Then, we take your breed matches, and find you adoptable dogs near you, in the breeds that suit your life. Are you ready to see what dogs are out there waiting for you?</p>
-        <button type="button" id="show-quiz">Take the Quiz!</button>
+          <p>Are you interested in adding a new dog to your household? Pooch Match is here to help you find your best possible new best friend!</p> <br>
+          <p>We have made a quiz, designed to help you find the dog breeds that match best with your lifestyle and preferences, so that your pup is exactly what you need.</p> <br>
+          <p>Then, we take your breed matches, and find you adoptable dogs near you, in the breeds that suit your life. Are you ready to see what dogs are out there waiting for you?</p> <br>
+          <button type="button" id="show-quiz">Take the Quiz!</button>
+        </div>
       </div>
       <div class="quiz-page" id="the-quiz">
         <img id="left-arrow"></img>
@@ -148,160 +182,74 @@
               <p>Please enter your 5 digit zip code to see your matches! </p><input id="zipCode" type="text" pattern="[0-9]{5}" title="Five digit zip code" placeholder="Five digit zip code" />
             </div>
           </form>
-
-    <main>
-      <section id="quiz">
-        <div class="quiz-page" id="instructions">
-          <h2>Welcome to Pooch Match!</h2>
-          <h3 id="tagline">Find your new best friend!</h3>
-          <p>Are you interested in adding a new dog to your household? Pooch Match is here to help you find your best possible new best friend!</p>
-          <p>We have made a quiz, designed to help you find the dog breeds that match best with your lifestyle and preferences, so that your pup is exactly what you need.</p>
-          <p>Then, we take your breed matches, and find you adoptable dogs near you, in the breeds that suit your life. Are you ready to see what dogs are out there waiting for you?</p>
-          <button type="button" id="show-quiz">Take the Quiz!</button>
         </div>
-        <div class="quiz-page" id="the-quiz">
-          <img id="left-arrow"></img>
-          <div id="questions">
-            <form id="dog-form">
-              <div class="allergy">
-                <p>Are you or anyone in your house allergic to dogs?</p>
-                <input type="checkbox" id="allergy" name="allergy">
-                <label for="allergy">Yes</label>
-              </div>
-              <div class="kids">
-                <p>Does your household include any children under 10?</p>
-                <input type="checkbox" id="kids" name="kids">
-                <label for="kids">Yes</label>
-              </div>
-              <div class="energy">
-                <p>How many hours a week will spend exercising your new dog?</p>
-                <select id="energy" name="energy">
-                  <option selected disabled>Choose One</option>
-                  <option value="1">2-4</option>
-                  <option value="2">4-6</option>
-                  <option value="3">7+</option>
-                </select>
-              </div>
-              <div class="size">
-                <p>How big of a dog are you interested in getting? Choose all that apply.</p>
-                <input type="checkbox" id="size1" name="size1">
-                <label for="size1">Tiny, under 15lbs</label>
-                <input type="checkbox" id="size2" name="size2">
-                <label for="size2">Small, under 30lbs</label>
-                <input type="checkbox" id="size3" name="size3">
-                <label for="size3">Medium, 30-60lbs</label>
-                <input type="checkbox" id="size4" name="size4">
-                <label for="size4">Large, 60-90lbs</label>
-                <input type="checkbox" id="size5" name="size5">
-                <label for="size5">Giant, over 90lbs</label>
-              </div>
-              <div class="trainable">
-                <p>How much experience do you have training dogs?</p>
-                <select id="trainable" name="trainable">
-                  <option selected disabled>Choose One</option>
-                  <option value="1">I've never trained a dog before.</option>
-                  <option value="2">I've taught a dog to sit but not much more.</option>
-                  <option value="3">I've trained a dog to be well-behaved</option>
-                  <option value="4">I have a lot of experience training dogs, or I'm willing to hire a trainer.</option>
-                </select>
-              </div>
-              <div class="grooming">
-                <p>How much effort are you willing to spend on grooming your dog?</p>
-                <select id="grooming" name="">
-                  <option selected disabled>Choose One</option>
-                  <option value="1">I'm happy to brush the dog weekly but not much more.</option>
-                  <option value="2">I can handle a shaggy dog that needs brushing, but I draw the line at giving haircuts.</option>
-                  <option value="3">Bring on the fancy pooches, I love grooming or I'm willing to pay a groomer.</option>
-                </select>
-              </div>
-              <div class="drools">
-                <p>Do you prefer a dog that doesn't drool much?</p>
-                <input type="checkbox" id="drools" name="drools">
-                <label for="drools">Yes</label>
-              </div>
-              <div class="sheds">
-                <p>All dogs shed, but some more than others. Are you okay with a dog that sheds more than minimally?</p>
-                <input type="checkbox" id="sheds" name="sheds">
-                <label for="sheds">Yes</label>
-              </div>
-              <div class="yard">
-                <p>Do you have a yard for your furry friend?</p>
-                <input type="checkbox" id="yard" name="yard">
-                <label for="yard">Yes</label>
-              </div>
-              <div class="zip">
-                <p>Please enter your 5 digit zip code to see your matches! </p><input id="zipCode" type="text" pattern="[0-9]{5}" title="Five digit zip code" placeholder="Five digit zip code" />
-              </div>
-            </form>
-          </div>
           <img id="right-arrow"></img>
+      </div>
+    </section>
+    <div id="results">
+      <section id="breedSelection">
 
+      </section>
+
+      <section id="breedList">
+
+      </section>
+
+    </div>
+    <section id="about">
+      <h1>About Us</h1>
+       <section class="about-us">
+        <div class="members">
+          <img src="http://fillmurray.com/200/300"></img>
+          <h3>Mark Reynoso</h3>
+          <p>somet text about the individual that lets us know more about them</p>
+           <div class="socialMedia">
+            <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img><a>
+           <div>
+        </div>
+
+        <div class="members">
+          <img src="http://fillmurray.com/200/300"></img>
+          <h3>Kinley Ramson</h3>
+          <p>somet text about the individual that lets us know more about them</p>
+          <div class="socialMedia">
+           <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img><a>
+          <div>
+        </div>
+
+        <div class="members">
+        <img src="http://fillmurray.com/200/300"></img>
+          <h3>Brian Wheeler</h3>
+          <p>somet text about the individual that lets us know more about them</p>
+          <div class="socialMedia">
+           <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img><a>
+          <div>
+        </div>
+
+       <div class="members">
+        <img src="http://fillmurray.com/200/300"></img>
+          <h3>Daniel Pillay</h3>
+          <p>somet text about the individual that lets us know more about them</p>
+          <div class="socialMedia">
+           <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img><a>
+          <div>
+        </div>
+
+        <div class="members">
+          <img src="http://fillmurray.com/200/300"></img>
+          <h3>Asha Ramson</h3>
+          <p>somet text about the individual that lets us know more about them</p>
+          <div class="socialMedia">
+           <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img></a>
+          <div>
         </div>
       </section>
-      <div id="results">
-        <section id="breedSelection">
+    </section>
+  </main>
 
-        </section>
-
-        <section id="breedList">
-
-        </section>
-
-      </div>
-      <section id="about">
-        <h1>About Us</h1>
-         <section class="about-us">
-          <div class="members">
-            <img src="http://fillmurray.com/200/300"></img>
-            <h3>Mark Reynoso</h3>
-            <p>somet text about the individual that lets us know more about them</p>
-             <div class="socialMedia">
-              <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img><a>
-             <div>
-          </div>
-
-          <div class="members">
-            <img src="http://fillmurray.com/200/300"></img>
-            <h3>Kinley Ramson</h3>
-            <p>somet text about the individual that lets us know more about them</p>
-            <div class="socialMedia">
-             <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img><a>
-            <div>
-          </div>
-
-          <div class="members">
-          <img src="http://fillmurray.com/200/300"></img>
-            <h3>Brian Wheeler</h3>
-            <p>somet text about the individual that lets us know more about them</p>
-            <div class="socialMedia">
-             <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img><a>
-            <div>
-          </div>
-
-         <div class="members">
-          <img src="http://fillmurray.com/200/300"></img>
-            <h3>Daniel Pillay</h3>
-            <p>somet text about the individual that lets us know more about them</p>
-            <div class="socialMedia">
-             <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img><a>
-            <div>
-          </div>
-
-          <div class="members">
-            <img src="http://fillmurray.com/200/300"></img>
-            <h3>Asha Ramson</h3>
-            <p>somet text about the individual that lets us know more about them</p>
-            <div class="socialMedia">
-             <a href=""><img src="http://www.providence.edu/SiteAssets/Images/Footer/linkedin.png"></img></a>
-            <div>
-          </div>
-        </section>
-      </section>
-    </main>
-
-    <footer>
-      <p>Copyright: Mark Reynoso, Kinley Ramson, Brian Wheeler, Daniel Pillay 2017</p>
-    </footer>
+  <footer>
+    <p>Copyright: Mark Reynoso, Kinley Ramson, Brian Wheeler, Daniel Pillay 2017</p>
+  </footer>
 
   </body>
   <script type="text/javascript" src="/data/breeds.json"></script>
