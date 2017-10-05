@@ -41,26 +41,26 @@ var app = app || {};
     $('#dog-form').on('submit', function(event){
       event.preventDefault();
 
+      if ($('div.checkbox-group.required :checkbox:checked').length > 0) {
 
+        let data = {
+          allergy: event.target.allergy.checked,
+          kids: event.target.kids.checked,
+          energy: event.target.energy.value,
+          size1: event.target.size1.checked,
+          size2: event.target.size2.checked,
+          size3: event.target.size3.checked,
+          size4: event.target.size4.checked,
+          size5: event.target.size5.checked,
+          trainable: event.target.trainable.value,
+          grooming: event.target.grooming.value,
+          sheds: event.target.sheds.checked,
+          yard: event.target.yard.checked,
+          drools: event.target.drools.checked,
+          zip: event.target.zipCode.value
+        };
 
-      let data = {
-        allergy: event.target.allergy.checked,
-        kids: event.target.kids.checked,
-        energy: event.target.energy.value,
-        size1: event.target.size1.checked,
-        size2: event.target.size2.checked,
-        size3: event.target.size3.checked,
-        size4: event.target.size4.checked,
-        size5: event.target.size5.checked,
-        trainable: event.target.trainable.value,
-        grooming: event.target.grooming.value,
-        sheds: event.target.sheds.checked,
-        yard: event.target.yard.checked,
-        drools: event.target.drools.checked,
-        zip: event.target.zipCode.value
-      };
-
-      $.get('/dbpull', data)
+        $.get('/dbpull', data)
         .then(results => {
           console.log(results.length);
           if(results.length === 0){
@@ -77,10 +77,11 @@ var app = app || {};
             apiLoop(callback, data.zip);
           }
         })
-      page('/results');
-      // .then(results => app.dogData = results)
-      //   .then(() => apiLoop(callback, data.zip));
-      // page('/results');
+        page('/results');
+      }else {
+        $('.hidden-alert').show().delay(5000).fadeOut(1500);
+      }
+
     });
   }
 
