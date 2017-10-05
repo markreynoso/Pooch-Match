@@ -6,7 +6,7 @@ var app = app || {};
 
   resultsController.index = () => {
     $('#results').show().siblings().hide();
-    $('#results-link').hide();
+    $('#results-link').show();
     module.breedListener();
   };
 
