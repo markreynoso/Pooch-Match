@@ -13,7 +13,6 @@ var app = app || {};
   module.breedListener = function(){
     $('#breedList').off('click').on('click', '.breed-match', function(event){
       event.stopPropagation();
-      console.log(event);
       $('#breedList').hide();
       $('#breedSelection').show();
       app.appendMatches(event);

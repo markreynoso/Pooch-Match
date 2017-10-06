@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Pooch Match</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property=”og:title” content=”Pooch Match. Find your perfect dog breed.” />
     <meta property=”og:url” content=”http://poochmatch.herokuapp.com” />
@@ -17,14 +16,12 @@
     <link rel="stylesheet" href="styles/modules/about.css">
     <link rel="stylesheet" href="styles/modules/adoptable.css">
     <link rel="stylesheet" href="styles/modules/breedmatch.css">
-
     <link href="http://downloadicons.net/sites/default/files/dog-icon-86470.png" rel="icon" type="image/x-icon" />
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.7.1/page.min.js"></script>
+<!-- handlebars template -->
     <script id="adoptablePet-template" type="text/x-handlebars-template">
-
       <section class="adoptable">
         <div>
           <img src="{{ picture }}"></img>
@@ -42,15 +39,11 @@
             {{#if city}}
               <li>
                 {{city}}
-              </li>
             {{/if}}
             {{#if state}}
-              <li>
                 {{state}}
-              </li>
             {{/if}}
             {{#if zip}}
-              <li>
                 {{zip}}
               </li>
             {{/if}}
@@ -68,7 +61,7 @@
         </div>
       </section>
     </script>
-
+  <!-- handlebars template -->
     <script id="breedMatch-template" type="text/x-handlebars-template">
       <ul class="the-breed">
         <li class="breed-match">{{ name }}</li>
@@ -77,215 +70,203 @@
         </li>
       </ul>
     </script>
-
   </head>
   <body>
-
-  <header>
-    <nav id="topnav">
-      <div id="menu-icon">
-        <img id="hamburger" src="img/dachshundburgermenu.png"></img>
-      </div>
-      <h1>Pooch Match</h1>
-      <div class="menu">
-        <ul id="navlist">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li id="results-link"><a href="/results">Your Matches</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <div class="background-image">
-    <img src="/img/park.jpg" alt="a park">
-  </div>
-  <main>
-    <section id="quiz">
-      <div class="quiz-page" id="instructions">
-        <div id="welcome-div">
-          <h2 id="welcome">Welcome to Pooch Match!</h2>
+    <header>
+      <nav id="topnav">
+        <div id="menu-icon">
+          <img id="hamburger" src="img/dachshundburgermenu.png"></img>
         </div>
-        <div id="tagline-div">
-          <h3 id="tagline">Find your new best friend!</h3>
+        <h1>Pooch Match</h1>
+        <div class="menu">
+          <ul id="navlist" class="visible">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li id="results-link"><a href="/results">Your Matches</a></li>
+          </ul>
         </div>
-        <div id="home-body">
-          <p>Are you interested in adding a new dog to your household? Pooch Match is here to help you find your best possible new best friend!</p> <br>
-          <p>We have made a quiz, designed to help you find the dog breeds that match best with your lifestyle and preferences, so that your pup is exactly what you need.</p> <br>
-          <p>Then, we take your breed matches, and find you adoptable dogs near you, in the breeds that suit your life. Are you ready to see what dogs are out there waiting for you?</p> <br>
-          <button type="button" id="show-quiz">Take the Quiz!</button>
-        </div>
-      </div>
-      <div class="quiz-page" id="the-quiz">
-        <img id="left-arrow"></img>
-        <div id="questions">
-          <form id="dog-form">
-            <div class="allergy">
-              <p>Are you or anyone in your house allergic to dogs?</p>
-              <input type="checkbox" id="allergy" name="allergy">
-              <label for="allergy">Yes</label>
-            </div>
-            <div class="kids">
-              <p>Does your household include any children under 10?</p>
-              <input type="checkbox" id="kids" name="kids">
-              <label for="kids">Yes</label>
-            </div>
-            <div class="energy">
-              <p>How many hours a week will you spend exercising your new dog?</p>
-              <select required id="energy" name="energy">
-                <option value="" selected disabled>Choose One</option>
-                <option value="1">2-4</option>
-                <option value="2">4-6</option>
-                <option value="3">7+</option>
-              </select>
-            </div>
-            <div class="size checkbox-group required">
-              <p>How big of a dog are you interested in getting? Choose all that apply.</p>
-              <div class="hidden-alert">
-                <img src="/img/Exclamation_mark.png" alt="!">
-                Please select at least one size.
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="size1" name="size1">
-                <label for="size1">Tiny, under 15lbs</label>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="size2" name="size2">
-                <label for="size2">Small, under 30lbs</label>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="size3" name="size3">
-                <label for="size3">Medium, 30-60lbs</label>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="size4" name="size4">
-                <label for="size4">Large, 60-90lbs</label>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="size5" name="size5">
-                <label for="size5">Giant, over 90lbs</label>
-              </div>
-            </div>
-            <div class="trainable">
-              <p>How much experience do you have training dogs?</p>
-              <select required id="trainable" name="trainable">
-                <option value="" selected disabled>Choose One</option>
-                <option value="1">I've never trained a dog before.</option>
-                <option value="2">I've taught a dog to sit but not much more.</option>
-                <option value="3">I've trained a dog to be well-behaved</option>
-                <option value="4">I have a lot of experience training dogs, or I'm willing to hire a trainer.</option>
-              </select>
-            </div>
-            <div class="grooming">
-              <p>How much effort are you willing to spend on grooming your dog?</p>
-              <select required id="grooming" name="">
-                <option value="" selected disabled>Choose One</option>
-                <option value="1">I'm happy to brush the dog weekly but not much more.</option>
-                <option value="2">I can handle a shaggy dog that needs brushing, but I draw the line at giving haircuts.</option>
-                <option value="3">Bring on the fancy pooches, I love grooming or I'm willing to pay a groomer.</option>
-              </select>
-            </div>
-            <div class="drools">
-              <p>Do you prefer a dog that doesn't drool much?</p>
-              <input type="checkbox" id="drools" name="drools">
-              <label for="drools">Yes</label>
-            </div>
-            <div class="sheds">
-              <p>All dogs shed, but some more than others. Are you okay with a dog that sheds more than minimally?</p>
-              <input checked type="checkbox" id="sheds" name="sheds">
-              <label for="sheds">Yes</label>
-            </div>
-            <div class="yard">
-              <p>Do you have a yard for your furry friend?</p>
-              <input checked type="checkbox" id="yard" name="yard">
-              <label for="yard">Yes</label>
-            </div>
-            <div class="zip">
-              <p>Please enter your 5 digit zip code to see your matches! </p><input required id="zipCode" type="text" pattern="[0-9]{5}" title="Five digit zip code" placeholder="Five digit zip code" />
-            </div>
-            <div class="submit">
-              <div class="hidden-alert">
-                <img src="/img/Exclamation_mark.png" alt="!">
-                Please fill out size above.
-              </div>
-              <input type="submit" name="submit" value="See Your Breeds!">
-            </div>
-          </form>
-        </div>
-          <img id="right-arrow"></img>
-      </div>
-    </section>
-    <div id="results">
-      <section id="breedSelection">
-
-      </section>
-
-      <section id="breedList">
-
-      </section>
-
+      </nav>
+    </header>
+    <div class="background-image">
+      <img src="/img/park.jpg" alt="a park">
     </div>
-    <section id="about">
-      <h2>About Us</h2>
-       <section class="about-us">
-        <div class="members">
-          <img class="portrait" src="/img/mark_1024.jpg"></img>
-          <h3>Mark Reynoso</h3>
-          <p>Mark hails from the Island of Whidbey in the great Pacific Northwest. He has found his way into the wonderful
-          world of coding via non-profit fundraising and someday hopes to marry the two paths into some useful technology to benefit those in need.
-          For fun, you might find Mark playing on his boat, hiking in the mountains, or just hanging out with his wife Janna and two little boys, Silas and Caleb.</p>
-          <div class="socialMedia">
-            <a href="https://github.com/markreynoso"><img src="/img/github.png"></img></a>
-            <a href=""><img src="/img/linkedin.png"></img></a>
+    <main>
+      <section id="quiz">
+        <div class="quiz-page" id="instructions">
+          <div id="welcome-div">
+            <h2 id="welcome">Welcome to Pooch Match!</h2>
+          </div>
+          <div id="tagline-div">
+            <h3 id="tagline">Find your new best friend!</h3>
+          </div>
+          <div id="home-body">
+            <p>Are you interested in adding a new dog to your household? Pooch Match is here to help you find your best possible new best friend!</p> <br>
+            <p>We have made a quiz, designed to help you find the dog breeds that match best with your lifestyle and preferences, so that your pup is exactly what you need.</p> <br>
+            <p>Then, we take your breed matches, and find you adoptable dogs near you, in the breeds that suit your life. Are you ready to see what dogs are out there waiting for you?</p> <br>
+            <button type="button" id="show-quiz">Take the Quiz!</button>
           </div>
         </div>
-
-        <div class="members">
-          <img class="portrait" src="/img/kinley.jpg"></img>
-          <h3>Kinley Ramson</h3>
-          <p>Kinley dskfjherilfugerhkjsfhalkdjfhladkjfi.</p>
-          <div class="socialMedia">
-            <a href="https://github.com/nothingnessbird"><img src="/img/github.png"></img></a>
-            <a href=""><img src="/img/linkedin.png"></img></a>
+        <!-- quiz section -->
+        <div class="quiz-page" id="the-quiz">
+          <img id="left-arrow"></img>
+          <div id="questions">
+            <form id="dog-form">
+              <div class="allergy">
+                <p>Are you or anyone in your house allergic to dogs?</p>
+                <input type="checkbox" id="allergy" name="allergy">
+                <label for="allergy">Yes</label>
+              </div>
+              <div class="kids">
+                <p>Does your household include any children under 10?</p>
+                <input type="checkbox" id="kids" name="kids">
+                <label for="kids">Yes</label>
+              </div>
+              <div class="energy">
+                <p>How many hours a week will you spend exercising your new dog?</p>
+                <select required id="energy" name="energy">
+                  <option value="" selected disabled>Choose One</option>
+                  <option value="1">2-4</option>
+                  <option value="2">4-6</option>
+                  <option value="3">7+</option>
+                </select>
+              </div>
+              <div class="size checkbox-group required">
+                <p>How big of a dog are you interested in getting? Choose all that apply.</p>
+                <div class="hidden-alert">
+                  <img src="/img/Exclamation_mark.png" alt="!">
+                  Please select at least one size.
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="size1" name="size1">
+                  <label for="size1">Tiny, under 15lbs</label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="size2" name="size2">
+                  <label for="size2">Small, under 30lbs</label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="size3" name="size3">
+                  <label for="size3">Medium, 30-60lbs</label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="size4" name="size4">
+                  <label for="size4">Large, 60-90lbs</label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="size5" name="size5">
+                  <label for="size5">Giant, over 90lbs</label>
+                </div>
+              </div>
+              <div class="trainable">
+                <p>How much experience do you have training dogs?</p>
+                <select required id="trainable" name="trainable">
+                  <option value="" selected disabled>Choose One</option>
+                  <option value="1">I've never trained a dog before.</option>
+                  <option value="2">I've taught a dog to sit but not much more.</option>
+                  <option value="3">I've trained a dog to be well-behaved</option>
+                  <option value="4">I have a lot of experience training dogs, or I'm willing to hire a trainer.</option>
+                </select>
+              </div>
+              <div class="grooming">
+                <p>How much effort are you willing to spend on grooming your dog?</p>
+                <select required id="grooming" name="">
+                  <option value="" selected disabled>Choose One</option>
+                  <option value="1">I'm happy to brush the dog weekly but not much more.</option>
+                  <option value="2">I can handle a shaggy dog that needs brushing, but I draw the line at giving haircuts.</option>
+                  <option value="3">Bring on the fancy pooches, I love grooming or I'm willing to pay a groomer.</option>
+                </select>
+              </div>
+              <div class="drools">
+                <p>Do you prefer a dog that doesn't drool much?</p>
+                <input type="checkbox" id="drools" name="drools">
+                <label for="drools">Yes</label>
+              </div>
+              <div class="sheds">
+                <p>All dogs shed, but some more than others. Are you okay with a dog that sheds more than minimally?</p>
+                <input checked type="checkbox" id="sheds" name="sheds">
+                <label for="sheds">Yes</label>
+              </div>
+              <div class="yard">
+                <p>Do you have a yard for your furry friend?</p>
+                <input checked type="checkbox" id="yard" name="yard">
+                <label for="yard">Yes</label>
+              </div>
+              <div class="zip">
+                <p>Please enter your 5 digit zip code to see your matches! </p><input required id="zipCode" type="text" pattern="[0-9]{5}" title="Five digit zip code" placeholder="Five digit zip code" />
+              </div>
+              <div class="submit">
+                <div class="hidden-alert">
+                  <img src="/img/Exclamation_mark.png" alt="!">
+                  Please fill out size above.
+                </div>
+                <input type="submit" name="submit" value="See Your Breeds!">
+              </div>
+            </form>
           </div>
-        </div>
-
-
-        <div class="members">
-        <img class="portrait" src="/img/brian.jpg"></img>
-          <h3>Brian Wheeler</h3>
-          <p>BryEYEan is from Arlington Washington. He is looking forward to graduating as a Full Stack Python Developer.</p>
-          <div class="socialMedia">
-            <a href="https://github.com/PoundsXD"><img src="/img/github.png"></img></a>
-            <a href=""><img src="/img/linkedin.png"></img></a>
-          </div>
-        </div>
-
-
-       <div class="members">
-        <img class="portrait" src="/img/daniel.JPG"></img>
-          <h3>Daniel Pillay</h3>
-          <p>Daniel was born and raised in Mountlake Terrace, Washington. He joined the Air Force in 2013  which led him to Japan and Oklahoma City. On his free time, he enjoys training Brazilian Jiu Jitsu and watching combat sports. His aspires to graduate Code Fellows as a Full Stack JavaScript Developer. </p>
-            <div class="socialMedia">
-              <a href="https://github.com/dpillay03"><img src="/img/github.png"></img></a>
-              <a href="https://www.linkedin.com/in/dpillay03/"><img src="/img/linkedin.png"></img></a>
-            </div>
-          </div>
-
-
-
-        <div class="members">
-          <img class="portrait" src="/img/asha.jpg"></img>
-          <h3>Asha Ramson</h3>
-          <p>I'm a service dog. Woof!</p>
+            <img id="right-arrow"></img>
         </div>
       </section>
-    </section>
-  </main>
-
-  <footer>
-    <p>	&copy; Mark Reynoso, Kinley Ramson, Brian Wheeler, Daniel Pillay 2017</p>
-  </footer>
-
+      <!-- template parent -->
+      <div id="results">
+        <section id="breedSelection">
+        </section>
+        <section id="breedList">
+        </section>
+      </div>
+      <!-- about us section -->
+      <section id="about">
+        <h2>About Us</h2>
+         <section class="about-us">
+          <div class="members">
+            <img class="portrait" src="/img/mark_1024.jpg"></img>
+            <h3>Mark Reynoso</h3>
+            <p>Mark hails from the Island of Whidbey in the great Pacific Northwest. He has found his way into the wonderful
+            world of coding via non-profit fundraising and someday hopes to marry the two paths into some useful technology to benefit those in need.
+            For fun, you might find Mark playing on his boat, hiking in the mountains, or just hanging out with his wife Janna and two little boys, Silas and Caleb.</p>
+            <div class="socialMedia">
+              <a href="https://github.com/markreynoso"><img src="/img/github.png"></img></a>
+              <a href=""><img src="/img/linkedin.png"></img></a>
+            </div>
+          </div>
+          <div class="members">
+            <img class="portrait" src="/img/kinley.jpg"></img>
+            <h3>Kinley Ramson</h3>
+            <p>Kinley dskfjherilfugerhkjsfhalkdjfhladkjfi.</p>
+            <div class="socialMedia">
+              <a href="https://github.com/nothingnessbird"><img src="/img/github.png"></img></a>
+              <a href=""><img src="/img/linkedin.png"></img></a>
+            </div>
+          </div>
+          <div class="members">
+            <img class="portrait" src="/img/brian.jpg"></img>
+            <h3>Brian Wheeler</h3>
+            <p>Brian is originally from Arizona and is an aspiring developer aiming to seek out new challenges. Formerly a worker in IT for Snowflake Unified School District.</p>
+            <div class="socialMedia">
+              <a href="https://github.com/PoundsXD"><img src="/img/github.png"></img></a>
+              <a href=""><img src="/img/linkedin.png"></img></a>
+            </div>
+          </div>
+         <div class="members">
+          <img class="portrait" src="/img/daniel.JPG"></img>
+            <h3>Daniel Pillay</h3>
+            <p>Daniel was born and raised in Mountlake Terrace, Washington. He joined the Air Force in 2013  which led him to Japan and Oklahoma City. On his free time, he enjoys training Brazilian Jiu Jitsu and watching combat sports. His aspires to graduate Code Fellows as a Full Stack JavaScript Developer. </p>
+              <div class="socialMedia">
+                <a href="https://github.com/dpillay03"><img src="/img/github.png"></img></a>
+                <a href="https://www.linkedin.com/in/dpillay03/"><img src="/img/linkedin.png"></img></a>
+              </div>
+          </div>
+          <div class="members">
+            <img class="portrait" src="/img/asha.jpg"></img>
+            <h3>Asha Ramson</h3>
+            <p>I'm a service dog. Woof!</p>
+          </div>
+        </section>
+      </section>
+    </main>
+    <!-- footer -->
+    <footer>
+      <p>	&copy; Mark Reynoso, Kinley Ramson, Brian Wheeler, Daniel Pillay 2017</p>
+    </footer>
   </body>
   <script type="text/javascript" src="/data/breeds.json"></script>
   <script type="text/javascript" src="/scripts/model/breeds.js"></script>

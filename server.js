@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 3000;
 const APP = EXPRESS();
 
 const CONSTRING = process.env.DATABASE_URL || 'postgres://localhost:5432/breeds';
-// const CONSTRING = process.env.DATABASE_URL || 'postgres://postgres:54321@localhost:5432/breeds';
 const REQUESTPROXY = require('express-request-proxy');
 const CLIENT = new PG.Client(CONSTRING);
 CLIENT.connect();
@@ -19,8 +18,6 @@ APP.use(PARSE.urlencoded({extended: true}));
 APP.get('/', function(request, response){
   response.sendFile('index.html', {root: './public'});
 })
-
-// APP.get('/match/', breedQuery);
 
 function makeTable(request, response){
   CLIENT.query(`CREATE TABLE IF NOT EXISTS dogs (
@@ -37,8 +34,8 @@ function makeTable(request, response){
       needsYard BOOLEAN,
       allergies BOOLEAN,
       sheds BOOLEAN)`)
-        .then(loadDogs)
-        .catch(console.error);
+    .then(loadDogs)
+    .catch(console.error);
 }
 
 function loadDogs(){
@@ -136,17 +133,16 @@ function queryMaker(data){
   }else{
     query13 = query12;
   }
-  console.log(query13);
   return query13;
 }
 
 APP.get('/dbpull', function(request, response){
 
   CLIENT.query(`SELECT name, url FROM dogs WHERE ${queryMaker(request.query)}`)
-  .then(result => {
-    response.send(result.rows);
-  })
-  .catch(console.error)
+    .then(result => {
+      response.send(result.rows);
+    })
+    .catch(console.error)
 })
 
 APP.get('/find/:breed/:zip', function(request, response){
