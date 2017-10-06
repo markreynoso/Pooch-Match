@@ -133,7 +133,6 @@ function queryMaker(data){
   }else{
     query13 = query12;
   }
-  console.log(query13);
   return query13;
 }
 
