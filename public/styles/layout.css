@@ -12,10 +12,12 @@ header{
 
 #navlist {
   list-style-type: none;
-  display: none;
+  /*display: none;*/
   text-align: center;
   padding-bottom: 15px;
-
+}
+.visible{
+  display: none;
 }
 #navlist li{
   border: 1px solid aquamarine;
@@ -56,12 +58,6 @@ footer {
   padding: 10px;
 }
 
-
-#topnav:hover ul {
-  display: block;
-}
-
-
 @media (min-width: 650px){
   h1{
     font-size: 50px;
@@ -72,6 +68,10 @@ footer {
     display: none;
   }
   #navlist{
+    /*display: inline-block;*/
+    /*margin: auto;*/
+  }
+  .visible{
     display: inline-block;
     margin: auto;
   }

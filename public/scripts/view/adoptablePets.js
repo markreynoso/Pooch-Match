@@ -10,7 +10,7 @@ var app = app || {};
   function appendMatches(event){
     $('#breedSelection').empty();
     if (!app.adoptablePets.reduce((agg, dog) => agg.concat(dog.breeds), []).includes(event.target.innerText)){
-      $('main').append(`<div id="noPets"><h3>Sorry, the ${event.target.innerText} breed is currently unavailable for adoption in your area.</h3><p>To look consider another breed, click below</p><button name="tryAgain">Try Again</button></div>`);
+      $('main').append(`<div id="noPets"><h3>Sorry, the ${event.target.innerText} breed is currently unavailable for adoption in your area.</h3><p>To consider another breed, click below.</p><button name="tryAgain">See Breeds</button></div>`);
       $('#noPets button').on('click', function(){
         $('#noPets').remove();
         $('#breedSelection').hide();
