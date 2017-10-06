@@ -19,3 +19,13 @@
   font-family: 'Courgette', cursive;
   font-size: 3vh;
 }
+
+#breedMatchInstructions{
+  padding: 20px;
+  color: white;
+  width: 60vw;
+  margin: 10vh auto;
+  background-color: rgba(0, 0, 0, 0.73);
+  border-radius: .4em;
+  box-shadow: 1.1em 1.2em 1.5em rgba(0, 0, 0, 0.93);
+}
